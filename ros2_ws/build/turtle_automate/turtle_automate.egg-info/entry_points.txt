@@ -1,0 +1,3 @@
+[console_scripts]
+control_node = turtle_automate.control_node:main
+
