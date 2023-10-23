@@ -1,0 +1,5 @@
+[console_scripts]
+controller = my_robot_controller.controller:main
+draw_circle = my_robot_controller.draw_circle:main
+pose_subscriber = my_robot_controller.pose_subscriber:main
+

@@ -1,0 +1,19 @@
+[1.112s] Invoking command in '/home/bhanu/ros2_ws/build/my_robot_controller': PYTHONPATH=/home/bhanu/ros2_ws/build/my_robot_controller/prefix_override:/home/bhanu/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/bhanu/ros2_ws/build/my_robot_controller/build --no-deps install_data
+[1.488s] running develop
+[1.685s] running egg_info
+[1.686s] writing my_robot_controller.egg-info/PKG-INFO
+[1.686s] writing dependency_links to my_robot_controller.egg-info/dependency_links.txt
+[1.686s] writing entry points to my_robot_controller.egg-info/entry_points.txt
+[1.686s] writing requirements to my_robot_controller.egg-info/requires.txt
+[1.687s] writing top-level names to my_robot_controller.egg-info/top_level.txt
+[1.689s] reading manifest file 'my_robot_controller.egg-info/SOURCES.txt'
+[1.690s] writing manifest file 'my_robot_controller.egg-info/SOURCES.txt'
+[1.692s] running build_ext
+[1.692s] Creating /home/bhanu/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages/my-robot-controller.egg-link (link to .)
+[1.693s] Installing draw_circle script to /home/bhanu/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[1.693s] Installing pose_subscriber = my_robot_controller.pose_subscriber:mainturtle_controller script to /home/bhanu/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[1.693s] Installing test_node script to /home/bhanu/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[1.694s] 
+[1.694s] Installed /home/bhanu/ros2_ws/build/my_robot_controller
+[1.694s] running install_data
+[1.727s] Invoked command in '/home/bhanu/ros2_ws/build/my_robot_controller' returned '0': PYTHONPATH=/home/bhanu/ros2_ws/build/my_robot_controller/prefix_override:/home/bhanu/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/bhanu/ros2_ws/build/my_robot_controller/build --no-deps install_data
