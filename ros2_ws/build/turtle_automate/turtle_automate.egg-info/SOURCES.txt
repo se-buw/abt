@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+resource/turtle_automate
+turtle_automate/__init__.py
+turtle_automate/control_node.py
+turtle_automate.egg-info/PKG-INFO
+turtle_automate.egg-info/SOURCES.txt
+turtle_automate.egg-info/dependency_links.txt
+turtle_automate.egg-info/entry_points.txt
+turtle_automate.egg-info/requires.txt
+turtle_automate.egg-info/top_level.txt
+turtle_automate.egg-info/zip-safe
