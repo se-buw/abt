@@ -4,10 +4,10 @@ from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 
 
-class CircleDrawer(Node): #Using the node from rcply library to inherit the properties
+class MoveTurtle(Node): #Using the node from rcply library to inherit the properties
 
     def __init__(self):
-        super().__init__('circle_drawer')
+        super().__init__('turtle_mover')
         self.publisher_ = self.create_publisher(Twist, 'turtle1/cmd_vel', 10)
         self.subscription = self.create_subscription(
             Pose,
@@ -34,9 +34,9 @@ class CircleDrawer(Node): #Using the node from rcply library to inherit the prop
 
 def main(args=None): #main function 
     rclpy.init(args=args)
-    circle_drawer = CircleDrawer()
-    rclpy.spin(circle_drawer)
-    circle_drawer.destroy_node()
+    turtle_mover = MoveTurtle()
+    rclpy.spin(turtle_mover)
+    turtle_mover.destroy_node()
     rclpy.shutdown()
 
 
