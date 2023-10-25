@@ -1,0 +1,3 @@
+[console_scripts]
+moveTurtle = my_package.circle:main
+
