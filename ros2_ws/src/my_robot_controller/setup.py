@@ -23,7 +23,8 @@ setup(
             
             "draw_circle = my_robot_controller.draw_circle:main",
             "pose_subscriber = my_robot_controller.pose_subscriber:main",
-            "controller =my_robot_controller.controller:main"
+            "controller =my_robot_controller.controller:main",
+            "pytrees =my_robot_controller.pytrees:main"
         ],
     },
 )
