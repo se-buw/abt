@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
         'moveTurtle=my_package.circle:main'
-        'advanced_turtle = my_robot_controller.advanced_turtle:main',
+        'advanced_turtle = my_package.advanced_turtle:main',
         ],
     },
 )
