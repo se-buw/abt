@@ -1,0 +1,22 @@
+[0.587s] Invoking command in '/home/parallels/ros2_ws/src/py_trees_ros': PYTHONPATH=/home/parallels/ros2_ws/build/py_trees_ros/prefix_override:/home/parallels/ros2_ws/install/py_trees_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_trees_ros build --build-base /home/parallels/ros2_ws/build/py_trees_ros/build install --record /home/parallels/ros2_ws/build/py_trees_ros/install.log --single-version-externally-managed
+[0.727s] running egg_info
+[0.728s] writing ../../build/py_trees_ros/py_trees_ros.egg-info/PKG-INFO
+[0.728s] writing dependency_links to ../../build/py_trees_ros/py_trees_ros.egg-info/dependency_links.txt
+[0.728s] writing entry points to ../../build/py_trees_ros/py_trees_ros.egg-info/entry_points.txt
+[0.728s] writing top-level names to ../../build/py_trees_ros/py_trees_ros.egg-info/top_level.txt
+[0.730s] reading manifest file '../../build/py_trees_ros/py_trees_ros.egg-info/SOURCES.txt'
+[0.730s] adding license file 'LICENSE'
+[0.731s] writing manifest file '../../build/py_trees_ros/py_trees_ros.egg-info/SOURCES.txt'
+[0.731s] running build
+[0.731s] running build_py
+[0.732s] running install
+[0.732s] running install_lib
+[0.733s] running install_data
+[0.734s] running install_egg_info
+[0.735s] removing '/home/parallels/ros2_ws/install/py_trees_ros/lib/python3.10/site-packages/py_trees_ros-2.2.2-py3.10.egg-info' (and everything under it)
+[0.739s] Copying ../../build/py_trees_ros/py_trees_ros.egg-info to /home/parallels/ros2_ws/install/py_trees_ros/lib/python3.10/site-packages/py_trees_ros-2.2.2-py3.10.egg-info
+[0.744s] running install_scripts
+[0.756s] Installing py-trees-blackboard-watcher script to /home/parallels/ros2_ws/install/py_trees_ros/bin
+[0.756s] Installing py-trees-tree-watcher script to /home/parallels/ros2_ws/install/py_trees_ros/bin
+[0.756s] writing list of installed files to '/home/parallels/ros2_ws/build/py_trees_ros/install.log'
+[0.804s] Invoked command in '/home/parallels/ros2_ws/src/py_trees_ros' returned '0': PYTHONPATH=/home/parallels/ros2_ws/build/py_trees_ros/prefix_override:/home/parallels/ros2_ws/install/py_trees_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_trees_ros build --build-base /home/parallels/ros2_ws/build/py_trees_ros/build install --record /home/parallels/ros2_ws/build/py_trees_ros/install.log --single-version-externally-managed

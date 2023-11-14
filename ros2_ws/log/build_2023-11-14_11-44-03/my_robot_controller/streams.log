@@ -1,0 +1,25 @@
+[0.465s] Invoking command in '/home/parallels/ros2_ws/src/my_robot_controller': PYTHONPATH=/home/parallels/ros2_ws/build/my_robot_controller/prefix_override:/home/parallels/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/parallels/ros2_ws/build/my_robot_controller/build install --record /home/parallels/ros2_ws/build/my_robot_controller/install.log --single-version-externally-managed
+[0.589s] running egg_info
+[0.590s] writing ../../build/my_robot_controller/my_robot_controller.egg-info/PKG-INFO
+[0.591s] writing dependency_links to ../../build/my_robot_controller/my_robot_controller.egg-info/dependency_links.txt
+[0.591s] writing entry points to ../../build/my_robot_controller/my_robot_controller.egg-info/entry_points.txt
+[0.591s] writing requirements to ../../build/my_robot_controller/my_robot_controller.egg-info/requires.txt
+[0.591s] writing top-level names to ../../build/my_robot_controller/my_robot_controller.egg-info/top_level.txt
+[0.592s] reading manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[0.593s] writing manifest file '../../build/my_robot_controller/my_robot_controller.egg-info/SOURCES.txt'
+[0.593s] running build
+[0.593s] running build_py
+[0.594s] running install
+[0.594s] running install_lib
+[0.595s] running install_data
+[0.595s] running install_egg_info
+[0.596s] removing '/home/parallels/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[0.596s] Copying ../../build/my_robot_controller/my_robot_controller.egg-info to /home/parallels/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages/my_robot_controller-0.0.0-py3.10.egg-info
+[0.597s] running install_scripts
+[0.609s] Installing advanced_turtle script to /home/parallels/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[0.609s] Installing advanced_turtle2 script to /home/parallels/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[0.609s] Installing advanced_turtle3 script to /home/parallels/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[0.609s] Installing automate_turtle script to /home/parallels/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[0.609s] Installing complex_turtle script to /home/parallels/ros2_ws/install/my_robot_controller/lib/my_robot_controller
+[0.610s] writing list of installed files to '/home/parallels/ros2_ws/build/my_robot_controller/install.log'
+[0.623s] Invoked command in '/home/parallels/ros2_ws/src/my_robot_controller' returned '0': PYTHONPATH=/home/parallels/ros2_ws/build/my_robot_controller/prefix_override:/home/parallels/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/my_robot_controller build --build-base /home/parallels/ros2_ws/build/my_robot_controller/build install --record /home/parallels/ros2_ws/build/my_robot_controller/install.log --single-version-externally-managed
