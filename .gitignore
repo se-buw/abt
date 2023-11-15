@@ -1,7 +1,0 @@
-# Ignore build artifacts within the ROS 2 workspace
-ros2_ws/build/
-ros2_ws/install/
-
-# Ignore log files within the ROS 2 workspace
-ros2_ws/log/
-

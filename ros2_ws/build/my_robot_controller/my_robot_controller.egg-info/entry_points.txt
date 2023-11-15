@@ -1,8 +1,0 @@
-[console_scripts]
-advanced_turtle1 = my_robot_controller.advanced_turtle1:main
-advanced_turtle2 = my_robot_controller.advanced_turtle2:main
-advanced_turtle3 = my_robot_controller.advanced_turtle3:main
-moveTurtle = my_robot_controller.moveTurtle:main
-turtle_publisher = my_robot_controller.turtle_publisher:main
-turtle_subscriber = my_robot_controller.turtle_subscriber:main
-
