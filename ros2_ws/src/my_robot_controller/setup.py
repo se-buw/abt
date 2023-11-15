@@ -20,9 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'automate_turtle = my_robot_controller.automate_turtle:main',
-        'complex_turtle = my_robot_controller.complex_turtle:main',
-        'advanced_turtle = my_robot_controller.advanced_turtle:main',
+        'moveTurtle= my_robot_controller.moveTurtle:main',
+        'turtle_publisher= my_robot_controller.turtle_publisher:main',
+        'turtle_subscriber= my_robot_controller.turtle_subscriber:main',
+        'advanced_turtle1 = my_robot_controller.advanced_turtle1:main',
         'advanced_turtle2 = my_robot_controller.advanced_turtle2:main',
         'advanced_turtle3 = my_robot_controller.advanced_turtle3:main',
         

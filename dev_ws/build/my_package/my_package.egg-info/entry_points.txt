@@ -1,4 +1,0 @@
-[console_scripts]
-listener = my_package.coordinates:main
-talker = my_package.circle:main
-

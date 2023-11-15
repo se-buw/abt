@@ -1,38 +1,176 @@
-# ABT
+# adley
 
 
 
 ## Getting started
-
-This is the Analyses of Behavior Trees (ABT) project repository.
-
-
-## Quickstart: How to use the repo?
-#### Clone the repository
-
-```
-cd <location where the repo should be stored>
-git clone http://se-git.medien.uni-weimar.de/se-projects/abt.git
-```
-
-## Organisation of the repository
-
-This repository is intended as the central place for everything source code related. Source code related means all source files, scripts, source code documentation, and testing-related code are collected here, but please EXCLUDE binaries or external pre-compiled dependencies. Please use the [projects moodle-course](https://moodle.uni-weimar.de/course/view.php?id=47422) for meeting-related documents like notes, presentations, or paper collections.
-
-If you need to work on the same code simultaneously, feel free to create branches so that your changes do not interfere with the ones made by the other project members. But please also merge them when you finish your work or if they are not needed anymore.
-
-The repository is subdivided into several folders. A brief explanation of the sub-folders'  function can be found in the respective sub-folder. Please use the folders accordingly.
-
-### Branches
-- `main`: This is the main branch of the repository. It is intended to be used for the final version of the project. It should be stable and ready to use at any time.
-- TODO: 
-
-### Instruction for tasks submission
-- To submit your weekly work, you need to commit your work and create a tag for it. The tag should be named as `w-<week number>-<your name>`. For example, if I am submitting my work for week 1, the tag should be named as `w-1-soaib`. Please remember to commit your work before creating the tag. Otherwise, the tag will not contain your work. Please refer to the following link for more information on how to create a tag- https://git-scm.com/book/en/v2/Git-Basics-Tagging
-- After creating the tag, you need to push it to the remote repository. You can do it by running the following command: `git push origin <tag name>`. For example, if I am submitting my work for week 1, the command should be `git push origin w-1-soaib`. 
-- After pushing the tag, copy the tag link and submit it in the [moodle](https://moodle.uni-weimar.de/course/view.php?id=47422) corrosponding to the weekly task. You can copy the tag link by clicking on the tag name in the repository and then copying the link from the browser.
+Consists of a ros2 workspace
 
 
 
+## Package
+#### my_robot_controller
+
+This package consists of the following files
+
+1. __init__.py
+2. moveTurtle.py
+3. turtle_publisher.py
+4. turtle_subscriber.py
+5. advanced_turtle1.py
+6. advanced_turtle2.py
+7. advanced_turtle3.py
+
+
+#### 1.__init__.py
+
+It initialises the python package and marks the directory as a package.
+
+#### 2. moveTurtle.py
+
+It consists of the class MoveTurtle class which creates a publisher to control the turtle movement and subscriber to receive the co-ordinates of the turtle in the same terminal.
+
+The turtle movement is controlled to draw a circle by changing the linear velocity, angular velocity and angle of the turtlesim node.
+
+Run the code following the instructions at the end and using the name moveTurtle.
+
+##### Dependencies 
+rclpy
+Node from rclpy.node
+Twist from geometry_msgs.msg
+Pose from turtlesim.msg
+
+
+#### 3. turtle_publisher.py
+
+It consists of the class TurtlePublisher which controls the turtlesim node to move in a circle.
+
+The turtle movement is controlled to draw a circle by changing the linear velocity, angular velocity and angle of the turtlesim node.
+
+Run the code following the instructions at the end and using the name turtle_publisher.
+
+##### Dependencies 
+rclpy
+Node from rclpy.node
+Twist from geometry_msgs.msg
+time
+
+#### 4. turtle_subscriber.py
+
+It consists of the class "TurtleSubscriber" which receoves the messages from the turtlesim node x and y coordinates.
+
+Run the code following the instructions at the end and using the name turtle_subscriber.
+##### Dependencies 
+rclpy
+Node from rclpy.node
+Pose from turtlesim.msg
+
+#### 5. advanced_turtle1.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+
+The BT structure is as below:
+
+Sequence (Root)
+|
+|-- MoveForward (Action node)
+|
+|-- Zigzag (Action node)
+
+
+
+The main function is used to define the structure of BT.
+
+Run the code following the instructions at the end and using the name advanced_turtle1.
+
+##### Dependencies 
+py_trees
+rclpy
+Node from rclpy.node
+Twist from geometry_msgs.msg
+
+#### 6. advanced_turtle2.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+- "RotateClockwise" which rotates the turtle clockwise using the angular component of the node.
+- "RotateCounterClockwise" which rotates the turtle counter-clockwise using the angular component of the node.
+
+The BT structure is as below:
+
+Sequence (Root: Sequence node)
+|
+|-- MoveForward (Action node)
+|
+|-- Zigzag (Action node)
+|
+|-- RotateClockwise (Action node)
+|
+|-- RotateCounterClockwise (Action node)
+
+
+
+The main function is used to define the structure of BT.
+
+Run the code following the instructions at the end and using the name advanced_turtle2.
+
+##### Dependencies 
+py_trees
+rclpy
+Node from rclpy.node
+Twist from geometry_msgs.msg
+
+#### 7. advanced_turtle3.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+- "RotateClockwise" which rotates the turtle clockwise using the angular component of the node.
+- "RotateCounterClockwise" which rotates the turtle counter-clockwise using the angular component of the node.
+
+The BT structure is as below:
+
+RootSelector (Root : Selector node)
+|
+|-- ForwardNode (Sequence node)
+|   |
+|   |-- MoveForward (Action node)
+|   |
+|   |-- Zigzag (Action node)
+|
+|-- RotationNode (Sequence node)
+    |
+    |-- RotateClockwise (Action node)
+    |
+    |-- RotateCounterClockwise (Action node)
+
+
+The main function is used to define the structure of BT.
+
+Run the code following the instructions at the end and using the name advanced_turtle3.
+
+##### Dependencies 
+py_trees
+rclpy
+Node from rclpy.node
+Twist from geometry_msgs.msg
+
+
+
+
+## Running the code
+1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
+2. execute the command <colcon build>
+3. execute the command <source install/setup.bash>
+4. Run the desired file by executing the command : ros2 run <package name> <access name>
+   Access name is the same as the file name without the extension (e.g. .py for python)
 
 

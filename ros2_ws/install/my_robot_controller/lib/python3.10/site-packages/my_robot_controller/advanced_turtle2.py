@@ -3,7 +3,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
-class MoveForward(py_trees.behaviour.Behaviour):
+class MoveForward(py_trees.behaviour.Behaviour): #class for turtle moving forward
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -33,7 +33,7 @@ class MoveForward(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class Zigzag(py_trees.behaviour.Behaviour):
+class Zigzag(py_trees.behaviour.Behaviour): #class for zigzag movement
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -69,12 +69,12 @@ class Zigzag(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class RotateClockwise(py_trees.behaviour.Behaviour):
+class RotateClockwise(py_trees.behaviour.Behaviour): #class for clockwise rotation of the turtlesim node
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
         self.publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
-        self.timer = self.create_timer(3)  # Adjust the timer for clockwise rotation
+        self.timer = self.create_timer(3)  # timer for clockwise rotation
 
     def create_publisher(self, msg_type, topic, qos_profile):
         return self.node.create_publisher(msg_type, topic, qos_profile)
@@ -99,12 +99,12 @@ class RotateClockwise(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class RotateCounterClockwise(py_trees.behaviour.Behaviour):
+class RotateCounterClockwise(py_trees.behaviour.Behaviour): #class for counterclockwise rotation of the turtlesim node
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
         self.publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
-        self.timer = self.create_timer(3)  # Adjust the timer for counterclockwise rotation
+        self.timer = self.create_timer(3)  #  timer for counterclockwise rotation
 
     def create_publisher(self, msg_type, topic, qos_profile):
         return self.node.create_publisher(msg_type, topic, qos_profile)
@@ -133,19 +133,33 @@ def main():
     rclpy.init()
 
     node = Node("complex_turtle_controller")
-    root = py_trees.composites.Sequence("Sequence", memory=None)
+    root = py_trees.composites.Sequence("Sequence", memory=None) #Root node
     move_forward = MoveForward("MoveForward", node)
     zigzag = Zigzag("Zigzag", node)
     rotate_clockwise = RotateClockwise("RotateClockwise", node)
     rotate_counterclockwise = RotateCounterClockwise("RotateCounterClockwise", node)
 
-    root.add_child(move_forward)
+#adding child nodes
+    root.add_child(move_forward) 
     root.add_child(zigzag)
     root.add_child(rotate_clockwise)
     root.add_child(rotate_counterclockwise)
 
     tree = py_trees.trees.BehaviourTree(root)
-    tree.setup(timeout=45)  # Increase the timeout for all behaviors
+    
+    #The BT structure is as below:
+	#Sequence (Root: Sequence node)
+	#|
+	#|-- MoveForward (Action node)
+	#|
+	#|-- Zigzag (Action node)
+	#|
+	#|-- RotateClockwise (Action node)
+	#|
+	#|-- RotateCounterClockwise (Action node)
+
+	
+    tree.setup(timeout=45)  # Increasing timeout for all behaviors
 
     rclpy.spin(node)
 

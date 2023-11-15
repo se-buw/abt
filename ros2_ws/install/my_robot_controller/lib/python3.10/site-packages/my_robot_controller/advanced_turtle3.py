@@ -3,7 +3,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
-class MoveForward(py_trees.behaviour.Behaviour):
+class MoveForward(py_trees.behaviour.Behaviour): # class for moving turtlsimnode forward
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -33,7 +33,7 @@ class MoveForward(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class Zigzag(py_trees.behaviour.Behaviour):
+class Zigzag(py_trees.behaviour.Behaviour): # class for moving turtlsimnode left and right
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -69,7 +69,7 @@ class Zigzag(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class RotateClockwise(py_trees.behaviour.Behaviour):
+class RotateClockwise(py_trees.behaviour.Behaviour): # class for moving turtlsimnode clockwise direction
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -99,7 +99,7 @@ class RotateClockwise(py_trees.behaviour.Behaviour):
     def terminate(self, new_status):
         pass
 
-class RotateCounterClockwise(py_trees.behaviour.Behaviour):
+class RotateCounterClockwise(py_trees.behaviour.Behaviour): # class for moving turtlsimnode anti-clockwise direction
     def __init__(self, name, node):
         super().__init__(name)
         self.node = node
@@ -133,7 +133,7 @@ def main():
     rclpy.init()
 
     node = Node("complex_turtle_controller")
-    root = py_trees.composites.Selector("RootSelector",memory=None)
+    root = py_trees.composites.Selector("RootSelector",memory=None) #Root node
     
     # nodes to organize the behaviors
     forward_node = py_trees.composites.Sequence("ForwardNode",memory=None)
@@ -159,6 +159,23 @@ def main():
     root.add_child(rotation_node)
 
     tree = py_trees.trees.BehaviourTree(root)
+    
+#    The BT structure is as below:
+
+	#RootSelector (Root : Selector node)
+	#|
+	#|-- ForwardNode (Sequence node)
+	#|   |
+	#|   |-- MoveForward (Action node)
+	#|   |
+	#|   |-- Zigzag (Action node)
+	#|
+	#|-- RotationNode (Sequence node)
+	#    |
+	#    |-- RotateClockwise (Action node)
+	#    |
+	#    |-- RotateCounterClockwise (Action node)
+    
     tree.setup(timeout=60)  # Increasing the timeout for all behaviors
 
     rclpy.spin(node)
