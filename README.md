@@ -34,9 +34,9 @@ The turtle movement is controlled to draw a circle by changing the linear veloci
 Run the code following the instructions at the end and using the name moveTurtle.
 
 ##### Dependencies 
-rclpy
-Node from rclpy.node
-Twist from geometry_msgs.msg
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
 Pose from turtlesim.msg
 
 
@@ -49,9 +49,9 @@ The turtle movement is controlled to draw a circle by changing the linear veloci
 Run the code following the instructions at the end and using the name turtle_publisher.
 
 ##### Dependencies 
-rclpy
-Node from rclpy.node
-Twist from geometry_msgs.msg
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
 time
 
 #### 4. turtle_subscriber.py
@@ -60,8 +60,8 @@ It consists of the class "TurtleSubscriber" which receoves the messages from the
 
 Run the code following the instructions at the end and using the name turtle_subscriber.
 ##### Dependencies 
-rclpy
-Node from rclpy.node
+rclpy\
+Node from rclpy.node\
 Pose from turtlesim.msg
 
 #### 5. advanced_turtle1.py
@@ -78,7 +78,7 @@ Sequence (Root)\
 |\
 |-- MoveForward (Action node)\
 |\
-|-- Zigzag (Action node)\
+|-- Zigzag (Action node)
 
 
 
@@ -87,10 +87,10 @@ The main function is used to define the structure of BT.
 Run the code following the instructions at the end and using the name advanced_turtle1.
 
 ##### Dependencies 
-py_trees
-rclpy
-Node from rclpy.node
-Twist from geometry_msgs.msg
+py_trees\
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
 
 #### 6. advanced_turtle2.py
 
@@ -104,15 +104,15 @@ It consists of the class
 
 The BT structure is as below:
 
-Sequence (Root: Sequence node)
-|
-|-- MoveForward (Action node)
-|
-|-- Zigzag (Action node)
-|
-|-- RotateClockwise (Action node)
-|
-|-- RotateCounterClockwise (Action node)
+Sequence (Root: Sequence node)\
+|\
+|-- MoveForward (Action node)\
+|\
+|-- Zigzag (Action node)\
+|\
+|-- RotateClockwise (Action node)\
+|\
+|-- RotateCounterClockwise (Action node)\
 
 
 
@@ -121,9 +121,9 @@ The main function is used to define the structure of BT.
 Run the code following the instructions at the end and using the name advanced_turtle2.
 
 ##### Dependencies 
-py_trees
-rclpy
-Node from rclpy.node
+py_trees\
+rclpy\
+Node from rclpy.node\
 Twist from geometry_msgs.msg
 
 #### 7. advanced_turtle3.py
@@ -138,19 +138,19 @@ It consists of the class
 
 The BT structure is as below:
 
-RootSelector (Root : Selector node)
-|
-|-- ForwardNode (Sequence node)
-|   |
-|   |-- MoveForward (Action node)
-|   |
-|   |-- Zigzag (Action node)
-|
-|-- RotationNode (Sequence node)
-    |
-    |-- RotateClockwise (Action node)
-    |
-    |-- RotateCounterClockwise (Action node)
+RootSelector (Root : Selector node)\
+|\
+|-- ForwardNode (Sequence node)\
+|   |\
+|   |-- MoveForward (Action node)\
+|   |\
+|   |-- Zigzag (Action node)\
+|\
+|-- RotationNode (Sequence node)\
+    |\
+    |-- RotateClockwise (Action node)\
+    |\
+    |-- RotateCounterClockwise (Action node)\
 
 
 The main function is used to define the structure of BT.
@@ -158,9 +158,9 @@ The main function is used to define the structure of BT.
 Run the code following the instructions at the end and using the name advanced_turtle3.
 
 ##### Dependencies 
-py_trees
-rclpy
-Node from rclpy.node
+py_trees\
+rclpy\
+Node from rclpy.node\
 Twist from geometry_msgs.msg
 
 
