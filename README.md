@@ -21,7 +21,7 @@ This package consists of the following files
 7. advanced_turtle3.py
 
 
-#### 1.__init__.py
+#### 1. #__init__.py
 
 It initialises the python package and marks the directory as a package.
 
