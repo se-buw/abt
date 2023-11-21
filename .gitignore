@@ -1,0 +1,55 @@
+# Ignore build artifacts
+/ros2_ws/build/
+/ros2_ws/install/
+
+# Ignore generated log files
+/ros2_ws/log/
+
+# Ignore Visual Studio Code specific files
+.vscode/
+
+# Ignore system and IDE-specific files
+*.swp
+*.swo
+*.user
+*.suo
+*.userprefs
+*.log
+*.log.*
+*.pidb
+*.tlog
+*.diff
+*.orig
+*.rej
+*.bak
+*.backup
+*.class
+*.pyc
+*.pyo
+*.dll
+*.exe
+*.obj
+*.o
+*.a
+*.lib
+*.so
+*.dylib
+*.ncb
+*.sdf
+*.suo
+*.pdb
+*.idb
+*.bsc
+*.ilk
+*.dSYM/
+*.exp
+*.log
+*.tmp
+*.zip
+*.rar
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.lz
+*.7z
+

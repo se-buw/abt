@@ -1,0 +1,16 @@
+<!-- my_behavior_tree_complex.xml -->
+<root main_tree_to_execute="MainTree" BTCPP_format="4">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="RootSequence">
+      <MoveForward name="MoveForward"/>
+      <TurnLeft name="TurnLeft"/>
+      <MySelector name="BatteryCheckSelector">
+        <CheckBattery name="CheckBattery"/>
+        <Sequence name="MoveTurnSequence">
+          <MoveRight name="MoveRight"/>
+          <StopMovement name="StopMovement"/>
+        </Sequence>
+      </MySelector>
+    </Sequence>
+  </BehaviorTree>
+</root>
