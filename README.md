@@ -8,8 +8,10 @@ Consists of a ros2 workspace
 
 
 ## Package
-#### my_robot_controller
+#### 1. my_robot_controller
+#### 2. my_behavior_tree
 
+#### 1. my_robot_controller
 This package consists of the following files
 
 1. [__init__.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#1-initpy)
@@ -164,6 +166,43 @@ Node from rclpy.node\
 Twist from geometry_msgs.msg
 
 
+#### 2. my_behavior_tree
+
+This package consists of the following executable files
+
+my_behavior_tree.cpp
+
+my_behavior_tree implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_behavior_tree.xml. As the BT is executed the output is printed in the console.
+
+The contents of my_behavior_tree.xml are given below,
+
+<!-- my_behavior_tree_complex.xml -->
+<root main_tree_to_execute="MainTree" BTCPP_format="4">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="RootSequence">
+      <MoveForward name="MoveForward"/>
+      <TurnLeft name="TurnLeft"/>
+      <MySelector name="BatteryCheckSelector">
+        <CheckBattery name="CheckBattery"/>
+        <Sequence name="MoveTurnSequence">
+          <MoveRight name="MoveRight"/>
+          <StopMovement name="StopMovement"/>
+        </Sequence>
+      </MySelector>
+    </Sequence>
+  </BehaviorTree>
+</root>
+
+We see the following ouput in the console:
+
+Moving forward...
+Turning left...
+Checking battery...
+----------------------
+Update the path in the my_behavior_tree.cpp file for the xml file as in your local directory before running the code.
+Install the BehaviorTree.CPP package in the src folder of the ros2_ws.
+Run the file following the instructions at the end and using the name my_behavior_tree.
+
 
 
 ## Running the code
@@ -172,5 +211,8 @@ Twist from geometry_msgs.msg
 3. execute the command <source install/setup.bash>
 4. Run the desired file by executing the command : ros2 run <package name> <access name>
    Access name is the same as the file name without the extension (e.g. .py for python)
+
+
+
 
 
