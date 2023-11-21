@@ -195,8 +195,8 @@ The contents of my_behavior_tree.xml are given below,
 
 We see the following ouput in the console:
 
-Moving forward...
-Turning left...
+Moving forward...\
+Turning left...\
 Checking battery...
 ----------------------
 Update the path in the my_behavior_tree.cpp file for the xml file as in your local directory before running the code.
