@@ -8,8 +8,8 @@ Consists of a ros2 workspace
 
 
 ## Package
-#### 1. my_robot_controller
-#### 2. my_behavior_tree
+#### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
+#### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 
 #### 1. my_robot_controller
 This package consists of the following files
@@ -200,8 +200,11 @@ Turning left...\
 Checking battery...
 ----------------------
 Update the path in the my_behavior_tree.cpp file for the xml file as in your local directory before running the code.
-Install the BehaviorTree.CPP package in the src folder of the ros2_ws.
 Run the file following the instructions at the end and using the name my_behavior_tree.
+
+Dependencies
+behaviortree_cpp\
+iostream
 
 
 
