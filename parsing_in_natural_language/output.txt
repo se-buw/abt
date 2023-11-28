@@ -1,0 +1,24 @@
+Types of nodes:
+Root node: Represents the root of the behavior tree
+Behaviortree node: Represents a node that defines the behavior tree in XML
+Repeat node: Represents a node that repeats the execution of its children for a specified number of cycles
+Sequence node: Represents a node that executes its children sequentially until one fails or all succeed
+Setblackboard node: Represents a node that sets a value in the blackboard
+Subtree node: Represents a reference to another behavior tree
+Nav2client node: Represents a node that interacts with a navigation client. It has a goal attribute with the placeholder 'target' indicating that it will use the target specified when this behavior tree is called.
+
+The tree has the following structure:
+1. root node has an attribute: {main_tree_to_execute='MainTree'} and has 2 children nodes
+  1.1. BehaviorTree node has an attribute: {ID='MainTree'} and has 1 children node
+    1.1.1. Repeat node has an attribute: {num_cycles='3'} and has 1 children node
+      1.1.1.1. Sequence node has 4 children nodes
+        1.1.1.1.1. SetBlackboard node has attributes: {output_key='Goal_a', value='-0.579;-1.341;0.0'} and has no children nodes
+        1.1.1.1.2. SetBlackboard node has attributes: {output_key='Goal_b', value='5.214;-1.533;0.0'} and has no children nodes
+        1.1.1.1.3. SetBlackboard node has attributes: {output_key='Goal_c', value='-1.588;1.253;0.0'} and has no children nodes
+        1.1.1.1.4. Sequence node has 3 children nodes
+          1.1.1.1.4.1. SubTree node has attributes: {ID='MoveRobot', target='Goal_a'} and has no children nodes
+          1.1.1.1.4.2. SubTree node has attributes: {ID='MoveRobot', target='Goal_b'} and has no children nodes
+          1.1.1.1.4.3. SubTree node has attributes: {ID='MoveRobot', target='Goal_c'} and has no children nodes
+  1.2. BehaviorTree node has an attribute: {ID='MoveRobot'} and has 1 children node
+    1.2.1. Sequence node has an attribute: {name='SetGoal'} and has 1 children node
+      1.2.1.1. Nav2Client node has an attribute: {goal='{target}'} and has no children nodes
