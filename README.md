@@ -10,6 +10,7 @@ Consists of a ros2 workspace
 ## Package
 #### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
+#### 3. BehaviorTree.CPP: C++ library for creating behavior trees
 
 #### 1. my_robot_controller
 This package consists of the following files
@@ -202,7 +203,7 @@ Checking battery...
 Update the path in the my_behavior_tree.cpp file for the xml file as in your local directory before running the code.
 Run the file following the instructions at the end and using the name my_behavior_tree.
 
-Dependencies
+#### Dependencies
 behaviortree_cpp\
 iostream
 
