@@ -1,0 +1,8 @@
+<!-- my_turtle_behavior.xml -->
+<root main_tree_to_execute="MainTree" BTCPP_format="4">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="TurtleBehavior">
+      <MoveForward name="MoveForward"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
