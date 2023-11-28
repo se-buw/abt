@@ -11,6 +11,7 @@ Consists of a ros2 workspace
 #### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 #### 3. BehaviorTree.CPP: C++ library for creating behavior trees
+#### 4. my_turtle_controller
 
 #### 1. my_robot_controller
 This package consists of the following files
@@ -207,6 +208,34 @@ Run the file following the instructions at the end and using the name my_behavio
 behaviortree_cpp\
 iostream
 
+#### 4. my_turtle_controller
+
+This package consists of the following executable files
+
+my_turtle_behavior.cpp
+
+my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled.
+
+The contents of my_behavior_tree.xml are given below,
+
+<!-- my_turtle_behavior.xml -->
+<root main_tree_to_execute="MainTree" BTCPP_format="4">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="TurtleBehavior">
+      <MoveForward name="MoveForward"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
+
+
+Update the path in the my_turtle_behaviore.cpp file for the xml file as in your local directory before running the code.
+Run the file following the instructions at the end and using the name my_turtle_controller.
+
+#### Dependencies
+behaviortree_cpp\
+rclcpp\
+geometry_msgs\
+turtlesim\
 
 
 ## Running the code
