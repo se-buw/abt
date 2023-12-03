@@ -1,0 +1,111 @@
+<root main_tree_to_execute="MainTree">
+    <!-- Main Behavior Tree -->
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <!-- Condition to check if an object is closer than 1m -->
+            <Condition ID="ObjectClose1m">
+                <CheckObjectProximity distance="1" />
+            </Condition>
+
+            <!-- Action to turn right when the object is close -->
+            <Action ID="TurnRight">
+                <Turn direction="right" />
+            </Action>
+
+
+            <!-- Condition to check if an object is behind -->
+            <Condition ID="ObjectBehind">
+                <CheckObjectProximity distance="1" />
+            </Condition>
+
+            <!-- Action to turn accelarate when the object is behind -->
+            <Action ID="Accelerate">
+              
+            </Action>
+	</Sequence>
+	<Fallback>
+
+            <!-- Condition to check if an object is closer than 1m -->
+            <Condition ID="ObjectClose2m">
+                <CheckObjectProximity distance="2" />
+	    </Condition>
+            <!-- Action to turn right when the object is close -->
+            <Action ID="TurnLeft">
+                <Turn direction="left" />
+            </Action>
+
+            <!-- Condition to check if a crossing is closer than 1m -->
+            <Condition ID="CrossingClose1m">
+                <CheckObjectProximity distance="1" />
+            </Condition>
+
+            <!-- Action to turn right when the object is close -->
+            <Action ID="Stop">
+                <Turn direction="" />
+            </Action>
+          </Fallback>
+            <!-- Subtree for lighting conditions -->
+            <SubTree ID="LightingConditions">
+                <Sequence>
+                    <!-- Condition to check if it's dark -->
+                    <Condition ID="DarkCondition">
+                        <CheckDarkness />
+                    </Condition>
+
+                    <!-- Action to turn on the lights when it's dark -->
+                    <Action ID="TurnOnLights">
+                        <TurnLights state="on" />
+                    </Action>
+                </Sequence>
+            </SubTree>
+
+            <!-- Condition to check if the car speed is faster than 10 km/h -->
+            <Condition ID="SpeedCondition">
+                <CheckSpeed threshold="10" />
+            </Condition>
+
+            <!-- Action to apply brakes when speed is faster than 10 km/h -->
+            <Action ID="ApplyBrakes">
+                <Brake />
+            </Action>
+        
+    </BehaviorTree>
+
+    <!-- TreeNodesModel (Actions and Conditions) -->
+    <TreeNodesModel>
+        <!-- Conditions -->
+        <Condition ID="ObjectClose">
+            <input_port default="1" name="distance" />
+        </Condition>
+        
+        <Condition ID="DarkCondition" />
+
+        <Condition ID="SpeedCondition">
+            <input_port default="10" name="threshold" />
+        </Condition>
+
+        <!-- Actions -->
+        <Action ID="TurnRight">
+            <Turn direction="right" />
+        </Action>
+
+        <Action ID="TurnOnLights">
+            <TurnLights state="on" />
+        </Action>
+
+        <Action ID="ApplyBrakes">
+            <Brake />
+        </Action>
+
+        <!-- Custom Actions -->
+        <Action ID="CheckObjectProximity">
+            <input_port default="1" name="distance" />
+        </Action>
+
+        <Action ID="CheckDarkness" />
+
+        <Action ID="CheckSpeed">
+            <input_port default="10" name="threshold" />
+        </Action>
+    </TreeNodesModel>
+</root>
