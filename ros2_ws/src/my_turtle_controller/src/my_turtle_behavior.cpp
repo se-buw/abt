@@ -1,3 +1,8 @@
+/* Reference :
+https://www.behaviortree.dev/
+http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncActionNode.html 
+*/
+
 #include <behaviortree_cpp/bt_factory.h>
 #include <behaviortree_cpp/behavior_tree.h>
 #include <rclcpp/rclcpp.hpp>
