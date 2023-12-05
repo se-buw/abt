@@ -214,17 +214,39 @@ This package consists of the following executable files
 
 my_turtle_behavior.cpp
 
-my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled.
+my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to draw a **hexagon**.
 
-The contents of my_behavior_tree.xml are given below,
+The behavior tree is stored in the xml as follows:
 
-<!-- my_turtle_behavior.xml -->
-<root main_tree_to_execute="MainTree" BTCPP_format="4">
-  <BehaviorTree ID="MainTree">
-    <Sequence name="TurtleBehavior">
-      <MoveForward name="MoveForward"/>
-    </Sequence>
-  </BehaviorTree>
+<root BTCPP_format="4">
+    <BehaviorTree ID="MainTree">
+        <Sequence name="DrawHexagon">
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
 </root>
 
 
@@ -240,7 +262,7 @@ turtlesim\
 
 ## Running the code
 1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
-2. execute the command <colcon build>
+2. execute the command <colcon build> or for particular packages use command colcon build --packages-select <name-of-pkg>
 3. execute the command <source install/setup.bash>
 4. Run the desired file by executing the command : ros2 run <package name> <access name>
    Access name is the same as the file name without the extension (e.g. .py for python)
