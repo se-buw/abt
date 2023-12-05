@@ -2,16 +2,19 @@
 #include <behaviortree_cpp/behavior_tree.h>
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
+#include <chrono>
+#include <cstdlib> // For std::rand()
+
 
 class MoveForward : public BT::SyncActionNode {
-
 public:
-    MoveForward(const std::string& name, const BT::NodeConfiguration& config)
-
-        : BT::SyncActionNode(name, config) {
-            
-        node_ = config.blackboard->template get<rclcpp::Node::SharedPtr>("node");
-        twist_publisher_ = node_->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+    MoveForward(const std::string& name)
+        : BT::SyncActionNode(name, {})
+    {
+        std::string nodeName = "move_forward_node_" + std::to_string(std::rand()); // random number for unique names
+        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+        //if (twist_publisher_==nullptr)
+        //twist_publisher_ = rclcpp::Node::make_shared("move_forward_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
     }
 
     BT::NodeStatus tick() override {
@@ -20,7 +23,7 @@ public:
         twist_msg->linear.x = 2.0;  // Adjust the linear velocity
         twist_publisher_->publish(std::move(twist_msg));
 
-        // Simulate a running action for a short duration
+        // Simulating a running action for a short duration
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
         // Return success once the action is completed
@@ -28,7 +31,92 @@ public:
     }
 
 private:
-    rclcpp::Node::SharedPtr node_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+};
+
+
+class MoveBackward : public BT::SyncActionNode {
+public:
+    MoveBackward(const std::string& name)
+        : BT::SyncActionNode(name, {})
+    {
+        std::string nodeName = "move_backward_node_" + std::to_string(std::rand());
+        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+        //twist_publisher_ = rclcpp::Node::make_shared("move_backward_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+    }
+
+    BT::NodeStatus tick() override {
+        // Move the turtle backward
+        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
+        twist_msg->linear.x = -2.0;  // Move backward
+        twist_publisher_->publish(std::move(twist_msg));
+
+        // Simulating a running action for a short duration
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+
+        // success once the action is completed
+        return BT::NodeStatus::SUCCESS;
+    }
+
+private:
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+};
+
+
+class RotateClockwise : public BT::SyncActionNode {
+public:
+    RotateClockwise(const std::string& name)
+        : BT::SyncActionNode(name, {})
+    {
+        std::string nodeName = "rotate_clockwise_node_" + std::to_string(std::rand());
+        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+        //twist_publisher_ = rclcpp::Node::make_shared("rotate_clockwise_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+    }
+
+    BT::NodeStatus tick() override {
+        // Rotating the turtle clockwise
+        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
+        twist_msg->angular.z = -1.0;  // Adjust the angular velocity for clockwise rotation
+        twist_publisher_->publish(std::move(twist_msg));
+
+        // Simulating a running action for a short duration
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+
+        // Returning success once the action is completed
+        return BT::NodeStatus::SUCCESS;
+    }
+
+private:
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+};
+
+
+
+// Action Node: RotateCounterClockwise
+class RotateCounterClockwise : public BT::SyncActionNode {
+public:
+    RotateCounterClockwise(const std::string& name)
+        : BT::SyncActionNode(name, {})
+    {
+        std::string nodeName = "rotate_counterclockwise_node_" + std::to_string(std::rand());
+        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+        //twist_publisher_ = rclcpp::Node::make_shared("rotate_counterclockwise_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+    }
+
+    BT::NodeStatus tick() override {
+        // Rotating the turtle counterclockwise
+        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
+        twist_msg->angular.z = 1.0;  // Adjust the angular velocity for counterclockwise rotation
+        twist_publisher_->publish(std::move(twist_msg));
+
+        // Simulating a running action for a short duration
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+
+        // Returning success once the action is completed
+        return BT::NodeStatus::SUCCESS;
+    }
+
+private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
 };
 
@@ -36,25 +124,19 @@ int main() {
     // ROS 2 initialization
     rclcpp::init(0, nullptr);
 
-    // Create a ROS 2 node
-    auto node = std::make_shared<rclcpp::Node>("my_node");
-
-    // Load the behavior tree from an external XML file
-    std::string xml_filename = "/home/parallels/abt/ros2_ws/src/my_turtle_controller/behavior_trees/my_behavior_tree.xml";
     BT::BehaviorTreeFactory factory;
+
+    // Registering the MoveForward, MoveBackward, RotateClockwise, TurnLeft, and RotateCounterClockwise node types
+    factory.registerNodeType<MoveForward>("MoveForward");
+    factory.registerNodeType<MoveBackward>("MoveBackward");
+    factory.registerNodeType<RotateClockwise>("RotateClockwise");
+    factory.registerNodeType<RotateCounterClockwise>("RotateCounterClockwise");
+
+    // Loading the behavior tree from an external XML file
+    std::string xml_filename = "/home/parallels/abt/ros2_ws/src/my_turtle_controller/behavior_trees/my_turtle_behavior.xml";
     auto tree = factory.createTreeFromFile(xml_filename);
 
-    // Register the MoveForward node type
-    factory.registerNodeType<MoveForward>("MoveForward",
-        [](const BT::NodeConfiguration& config) {
-            return BT::NodeStatus::SUCCESS; 
-        }
-
-    );
-
-
-
-    // Run the Behavior Tree
+    // Running the Behavior Tree
     tree.rootNode()->executeTick();
 
     // ROS 2 shutdown
