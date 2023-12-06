@@ -1,0 +1,2 @@
+Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': /usr/bin/cmake /home/bhanu/ros2_cpp/src/ros2_cpp_pkg -DCMAKE_INSTALL_PREFIX=/home/bhanu/ros2_cpp/install/ros2_cpp_pkg
+Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '1': /usr/bin/cmake /home/bhanu/ros2_cpp/src/ros2_cpp_pkg -DCMAKE_INSTALL_PREFIX=/home/bhanu/ros2_cpp/install/ros2_cpp_pkg

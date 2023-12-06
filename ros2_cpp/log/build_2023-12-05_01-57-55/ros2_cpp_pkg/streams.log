@@ -1,0 +1,17 @@
+[0.124s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.194s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.238s] [ 75%] Built target draw_circle
+[0.239s] [ 75%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[1.587s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[1.588s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:36:18:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::Tree::tickRoot()[m[K’
+[1.588s]    36 |     [01;31m[Ktree.tickRoot()[m[K;
+[1.588s]       |     [01;31m[K~~~~~~~~~~~~~^~[m[K
+[1.588s] In file included from [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1[m[K:
+[1.588s] [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:190:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KBT::NodeStatus BT::Tree::tickRoot(BT::Tree::TickOption, std::chrono::milliseconds)[m[K’
+[1.588s]   190 |   NodeStatus [01;36m[KtickRoot[m[K(TickOption opt, std::chrono::milliseconds sleep_time);
+[1.589s]       |              [01;36m[K^~~~~~~~[m[K
+[1.589s] [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:190:14:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 0 provided
+[2.207s] gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+[2.207s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+[2.208s] gmake: *** [Makefile:146: all] Error 2
+[2.212s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4

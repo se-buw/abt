@@ -1,0 +1,76 @@
+[0.152s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.235s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.257s] [ 25%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[0.264s] [ 75%] Built target draw_circle
+[0.541s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:16:38:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K<[m[K’ token
+[0.541s]    16 |     explicit ActionNode[34m[K([m[Kstd::function[01;31m[K<[m[Kvoid()> action) : action_(action) {}
+[0.541s]       |                        [34m[K~[m[K             [01;31m[K^[m[K
+[0.542s]       |                                      [32m[K)[m[K
+[0.542s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:24:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kfunction[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+[0.542s]    24 |     std::[01;31m[Kfunction[m[K<void()> action_;
+[0.542s]       |          [01;31m[K^~~~~~~~[m[K
+[0.542s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:2:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::function[m[K’ is defined in header ‘[01m[K<functional>[m[K’; did you forget to ‘[01m[K#include <functional>[m[K’?
+[0.542s]     1 | #include <iostream>
+[0.542s]   +++ |+[32m[K#include <functional>[m[K
+[0.542s]     2 | 
+[0.555s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In member function ‘[01m[Kvirtual NodeStatus ActionNode::tick()[m[K’:
+[0.555s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:19:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kaction_[m[K’ was not declared in this scope
+[0.555s]    19 |         [01;31m[Kaction_[m[K();
+[0.555s]       |         [01;31m[K^~~~~~~[m[K
+[0.555s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K At global scope:
+[0.556s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:47:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kvector[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+[0.556s]    47 |     std::[01;31m[Kvector[m[K<Node*> children_;
+[0.556s]       |          [01;31m[K^~~~~~[m[K
+[0.556s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:2:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::vector[m[K’ is defined in header ‘[01m[K<vector>[m[K’; did you forget to ‘[01m[K#include <vector>[m[K’?
+[0.556s]     1 | #include <iostream>
+[0.556s]   +++ |+[32m[K#include <vector>[m[K
+[0.557s]     2 | 
+[0.563s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In member function ‘[01m[Kvoid SequenceNode::addChild(Node*)[m[K’:
+[0.563s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:32:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kchildren_[m[K’ was not declared in this scope
+[0.563s]    32 |         [01;31m[Kchildren_[m[K.push_back(child);
+[0.563s]       |         [01;31m[K^~~~~~~~~[m[K
+[0.563s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In member function ‘[01m[Kvirtual NodeStatus SequenceNode::tick()[m[K’:
+[0.563s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:36:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kchildren_[m[K’ was not declared in this scope
+[0.563s]    36 |         for (Node* child : [01;31m[Kchildren_[m[K) {
+[0.563s]       |                            [01;31m[K^~~~~~~~~[m[K
+[0.564s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[0.564s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:55:6:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KActionNode::ActionNode(main()::<lambda()>)[m[K’
+[0.565s]    55 |     }[01;31m[K)[m[K);
+[0.565s]       |      [01;31m[K^[m[K
+[0.565s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode()[m[K’
+[0.565s]    14 | class [01;36m[KActionNode[m[K : public Node {
+[0.565s]       |       [01;36m[K^~~~~~~~~~[m[K
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(const ActionNode&)[m[K’
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[Kconst ActionNode&[m[K’
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(ActionNode&&)[m[K’
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[KActionNode&&[m[K’
+[0.566s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:59:6:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KActionNode::ActionNode(main()::<lambda()>)[m[K’
+[0.566s]    59 |     }[01;31m[K)[m[K);
+[0.567s]       |      [01;31m[K^[m[K
+[0.567s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode()[m[K’
+[0.567s]    14 | class [01;36m[KActionNode[m[K : public Node {
+[0.567s]       |       [01;36m[K^~~~~~~~~~[m[K
+[0.567s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[0.567s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(const ActionNode&)[m[K’
+[0.567s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[Kconst ActionNode&[m[K’
+[0.568s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(ActionNode&&)[m[K’
+[0.568s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[KActionNode&&[m[K’
+[0.568s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:63:6:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KActionNode::ActionNode(main()::<lambda()>)[m[K’
+[0.568s]    63 |     }[01;31m[K)[m[K);
+[0.568s]       |      [01;31m[K^[m[K
+[0.568s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode()[m[K’
+[0.568s]    14 | class [01;36m[KActionNode[m[K : public Node {
+[0.569s]       |       [01;36m[K^~~~~~~~~~[m[K
+[0.569s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[0.569s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(const ActionNode&)[m[K’
+[0.569s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[Kconst ActionNode&[m[K’
+[0.569s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr ActionNode::ActionNode(ActionNode&&)[m[K’
+[0.569s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:14:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kmain()::<lambda()>[m[K’ to ‘[01m[KActionNode&&[m[K’
+[0.570s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:67:5:[m[K [01;35m[Kwarning: [m[Kdeleting object of polymorphic class type ‘[01m[KSequenceNode[m[K’ which has non-virtual destructor might cause undefined behavior [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdelete-non-virtual-dtor-Wdelete-non-virtual-dtor]8;;[m[K]
+[0.571s]    67 |     [01;35m[Kdelete root[m[K;
+[0.571s]       |     [01;35m[K^~~~~~~~~~~[m[K
+[0.616s] gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+[0.617s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+[0.617s] gmake: *** [Makefile:146: all] Error 2
+[0.620s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4

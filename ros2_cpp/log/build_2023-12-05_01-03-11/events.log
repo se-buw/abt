@@ -1,0 +1,89 @@
+[0.000000] (-) TimerEvent: {}
+[0.000529] (ros2_cpp_pkg) JobQueued: {'identifier': 'ros2_cpp_pkg', 'dependencies': OrderedDict()}
+[0.001131] (ros2_cpp_pkg) JobStarted: {'identifier': 'ros2_cpp_pkg'}
+[0.094346] (ros2_cpp_pkg) JobProgress: {'identifier': 'ros2_cpp_pkg', 'progress': 'cmake'}
+[0.095117] (ros2_cpp_pkg) JobProgress: {'identifier': 'ros2_cpp_pkg', 'progress': 'build'}
+[0.096494] (ros2_cpp_pkg) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg', '--', '-j4', '-l4'], 'cwd': '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'bhanu'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/bhanu'), ('OLDPWD', '/home/bhanu'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '1807'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/bhanu/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'bhanu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'bhanu'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/bhanu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/bhanu-VirtualBox:@/tmp/.ICE-unix/1782,unix/bhanu-VirtualBox:/tmp/.ICE-unix/1782'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/088b5f8c_f7c7_40a7_b837_f50a86e08808'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.1H0YE2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.264'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/bhanu/ros2_ws/build/my_robot_controller:/home/bhanu/ros2_ws/install/my_robot_controller/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble')]), 'shell': False}
+[0.099658] (-) TimerEvent: {}
+[0.163218] (ros2_cpp_pkg) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target ros2_cpp_code\x1b[0m\n'}
+[0.184861] (ros2_cpp_pkg) StdoutLine: {'line': b'[ 50%] Built target draw_circle\n'}
+[0.200089] (-) TimerEvent: {}
+[0.205339] (ros2_cpp_pkg) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o\x1b[0m\n'}
+[0.300833] (-) TimerEvent: {}
+[0.402241] (-) TimerEvent: {}
+[0.502807] (-) TimerEvent: {}
+[0.608949] (-) TimerEvent: {}
+[0.711450] (-) TimerEvent: {}
+[0.812071] (-) TimerEvent: {}
+[0.912422] (-) TimerEvent: {}
+[1.016116] (-) TimerEvent: {}
+[1.119227] (-) TimerEvent: {}
+[1.227584] (-) TimerEvent: {}
+[1.332964] (-) TimerEvent: {}
+[1.435560] (-) TimerEvent: {}
+[1.536036] (-) TimerEvent: {}
+[1.639187] (-) TimerEvent: {}
+[1.739684] (-) TimerEvent: {}
+[1.894835] (-) TimerEvent: {}
+[1.995504] (-) TimerEvent: {}
+[2.096525] (-) TimerEvent: {}
+[2.197186] (-) TimerEvent: {}
+[2.297813] (-) TimerEvent: {}
+[2.401114] (-) TimerEvent: {}
+[2.527550] (-) TimerEvent: {}
+[2.628665] (-) TimerEvent: {}
+[2.730132] (-) TimerEvent: {}
+[2.852421] (-) TimerEvent: {}
+[2.953158] (-) TimerEvent: {}
+[3.061673] (-) TimerEvent: {}
+[3.162185] (-) TimerEvent: {}
+[3.315114] (-) TimerEvent: {}
+[3.432651] (-) TimerEvent: {}
+[3.540214] (ros2_cpp_pkg) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/11/bits/locale_conv.h:41\x1b[m\x1b[K,\n'}
+[3.541130] (-) TimerEvent: {}
+[3.541349] (ros2_cpp_pkg) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/locale:43\x1b[m\x1b[K,\n'}
+[3.541520] (ros2_cpp_pkg) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/bits/fs_path.h:37\x1b[m\x1b[K,\n'}
+[3.541642] (ros2_cpp_pkg) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/11/filesystem:45\x1b[m\x1b[K,\n'}
+[3.541754] (ros2_cpp_pkg) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/local/include/behaviortree_cpp/bt_factory.h:19\x1b[m\x1b[K,\n'}
+[3.541863] (ros2_cpp_pkg) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1\x1b[m\x1b[K:\n'}
+[3.541970] (ros2_cpp_pkg) StderrLine: {'line': b'/usr/include/c++/11/bits/unique_ptr.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Ktypename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...) [with _Tp = MoveForward; _Args = {const BT::NodeConfig&}; typename std::_MakeUniq<_Tp>::__single_object = std::unique_ptr<MoveForward, std::default_delete<MoveForward> >]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.542095] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:53:49:\x1b[m\x1b[K   required from here\n'}
+[3.542254] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/11/bits/unique_ptr.h:962:30:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KMoveForward::MoveForward(const BT::NodeConfig&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.542377] (ros2_cpp_pkg) StderrLine: {'line': b'  962 |     { return unique_ptr<_Tp>(\x1b[01;31m\x1b[Knew _Tp(std::forward<_Args>(__args)...)\x1b[m\x1b[K); }\n'}
+[3.542502] (ros2_cpp_pkg) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.542614] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:10:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KMoveForward::MoveForward(const string&, const NodeConfiguration&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.542730] (ros2_cpp_pkg) StderrLine: {'line': b'   10 |     \x1b[01;36m\x1b[KMoveForward\x1b[m\x1b[K(const std::string& name, const BT::NodeConfiguration& config)\n'}
+[3.542854] (ros2_cpp_pkg) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.542964] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:10:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 2 arguments, 1 provided\n'}
+[3.657260] (-) TimerEvent: {}
+[3.732080] (ros2_cpp_pkg) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1\x1b[m\x1b[K:\n'}
+[3.732382] (ros2_cpp_pkg) StderrLine: {'line': b'/usr/local/include/behaviortree_cpp/bt_factory.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, const PortsList&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>; BT::PortsList = std::unordered_map<std::__cxx11::basic_string<char>, BT::PortInfo>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.732537] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/behaviortree_cpp/bt_factory.h:379:24:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[3.732677] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:51:42:\x1b[m\x1b[K   required from here\n'}
+[3.732795] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/behaviortree_cpp/bt_factory.h:345:41:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kstatic assertion failed: [registerNode]: the registered class must have at least one of these two constructors:\n'}
+[3.732959] (ros2_cpp_pkg) StderrLine: {'line': b'  (const std::string&, const NodeConfig&) or (const std::string&)\n'}
+[3.733080] (ros2_cpp_pkg) StderrLine: {'line': b'Check also if the constructor is public!)\n'}
+[3.733198] (ros2_cpp_pkg) StderrLine: {'line': b'  345 |     static_assert(\x1b[01;31m\x1b[Kdefault_constructable || param_constructable\x1b[m\x1b[K,\n'}
+[3.733308] (ros2_cpp_pkg) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.733418] (ros2_cpp_pkg) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/local/include/behaviortree_cpp/bt_factory.h:345:41:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[K(((bool)default_constructable) || ((bool)param_constructable))\x1b[m\x1b[K\xe2\x80\x99 evaluates to false\n'}
+[3.757703] (-) TimerEvent: {}
+[3.862272] (-) TimerEvent: {}
+[3.962818] (-) TimerEvent: {}
+[4.065895] (-) TimerEvent: {}
+[4.166971] (-) TimerEvent: {}
+[4.278780] (-) TimerEvent: {}
+[4.380092] (-) TimerEvent: {}
+[4.497412] (-) TimerEvent: {}
+[4.597817] (-) TimerEvent: {}
+[4.724763] (-) TimerEvent: {}
+[4.827489] (-) TimerEvent: {}
+[4.979608] (-) TimerEvent: {}
+[5.092209] (-) TimerEvent: {}
+[5.153568] (ros2_cpp_pkg) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1\n'}
+[5.154070] (ros2_cpp_pkg) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2\n'}
+[5.154280] (ros2_cpp_pkg) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[5.157521] (ros2_cpp_pkg) CommandEnded: {'returncode': 2}
+[5.192994] (-) TimerEvent: {}
+[5.294496] (-) TimerEvent: {}
+[5.298409] (ros2_cpp_pkg) JobEnded: {'identifier': 'ros2_cpp_pkg', 'rc': 2}
+[5.311932] (-) EventReactorShutdown: {}

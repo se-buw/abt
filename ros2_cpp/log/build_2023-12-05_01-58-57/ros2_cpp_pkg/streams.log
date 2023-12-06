@@ -1,0 +1,15 @@
+[0.130s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.232s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.259s] [ 25%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[0.270s] [ 75%] Built target draw_circle
+[1.620s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[1.620s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:37:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBT::TickEngine[m[K’ has not been declared
+[1.621s]    37 |     BT::[01;31m[KTickEngine[m[K::TickOption tick_option = BT::TickEngine::TickOption::TICK_ROOT_HALT_ON_FAILURE;
+[1.621s]       |         [01;31m[K^~~~~~~~~~[m[K
+[1.624s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:41:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ktick_option[m[K’ was not declared in this scope
+[1.624s]    41 |     tree.tickRoot([01;31m[Ktick_option[m[K, timeout);
+[1.625s]       |                   [01;31m[K^~~~~~~~~~~[m[K
+[2.242s] gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+[2.243s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+[2.243s] gmake: *** [Makefile:146: all] Error 2
+[2.246s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4

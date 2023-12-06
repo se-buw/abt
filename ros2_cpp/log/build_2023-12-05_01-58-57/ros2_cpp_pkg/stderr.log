@@ -1,0 +1,10 @@
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:37:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBT::TickEngine[m[K’ has not been declared
+   37 |     BT::[01;31m[KTickEngine[m[K::TickOption tick_option = BT::TickEngine::TickOption::TICK_ROOT_HALT_ON_FAILURE;
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:41:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ktick_option[m[K’ was not declared in this scope
+   41 |     tree.tickRoot([01;31m[Ktick_option[m[K, timeout);
+      |                   [01;31m[K^~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

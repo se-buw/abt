@@ -1,0 +1,25 @@
+[0.102s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.157s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.181s] [ 25%] [32mBuilding CXX object CMakeFiles/draw_circle.dir/src/draw_circle.cpp.o[0m
+[0.189s] [ 50%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[3.459s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In lambda function:
+[3.459s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:49:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kconfig[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.459s]    49 |         []([01;35m[Kconst BT::NodeConfiguration& config[m[K) {
+[3.459s]       |            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.822s] In file included from [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1[m[K:
+[3.822s] /usr/local/include/behaviortree_cpp/bt_factory.h: In instantiation of ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, const PortsList&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>; BT::PortsList = std::unordered_map<std::__cxx11::basic_string<char>, BT::PortInfo>][m[K’:
+[3.822s] [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:379:24:[m[K   required from ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>][m[K’
+[3.822s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:48:42:[m[K   required from here
+[3.822s] [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:345:41:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: [registerNode]: the registered class must have at least one of these two constructors:
+[3.822s]   (const std::string&, const NodeConfig&) or (const std::string&)
+[3.822s] Check also if the constructor is public!)
+[3.823s]   345 |     static_assert([01;31m[Kdefault_constructable || param_constructable[m[K,
+[3.823s]       |                   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.823s] [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:345:41:[m[K [01;36m[Knote: [m[K‘[01m[K(((bool)default_constructable) || ((bool)param_constructable))[m[K’ evaluates to false
+[5.351s] gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+[5.352s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+[5.352s] gmake[1]: *** Waiting for unfinished jobs....
+[5.405s] [ 75%] [32m[1mLinking CXX executable draw_circle[0m
+[5.756s] [ 75%] Built target draw_circle
+[5.757s] gmake: *** [Makefile:146: all] Error 2
+[5.761s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4

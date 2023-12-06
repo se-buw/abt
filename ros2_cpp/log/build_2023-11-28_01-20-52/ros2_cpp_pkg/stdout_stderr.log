@@ -1,0 +1,9 @@
+[35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:148:10:[m[K [01;31m[Kfatal error: [m[Kbehaviortree_cpp_v3/behavior_tree.h: No such file or directory
+  148 | #include [01;31m[K<behaviortree_cpp_v3/behavior_tree.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,5 @@
+[35m[1mConsolidate compiler generated dependencies of target draw_circle[0m
+[35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[ 50%] Built target draw_circle
+[ 75%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[100%] [32m[1mLinking CXX executable ros2_cpp_code[0m

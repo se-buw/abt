@@ -1,0 +1,41 @@
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In constructor ‘[01m[KMoveForward::MoveForward(const string&)[m[K’:
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:17:34:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::SyncActionNode::SyncActionNode(const string&)[m[K’
+   17 |         : BT::SyncActionNode(name[01;31m[K)[m[K {
+      |                                  [01;31m[K^[m[K
+In file included from [01m[K/usr/local/include/behaviortree_cpp/behavior_tree.h:27[m[K,
+                 from [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:27[m[K,
+                 from [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1[m[K:
+[01m[K/usr/local/include/behaviortree_cpp/action_node.h:55:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KBT::SyncActionNode::SyncActionNode(const string&, const BT::NodeConfig&)[m[K’
+   55 |   [01;36m[KSyncActionNode[m[K(const std::string& name, const NodeConfig& config);
+      |   [01;36m[K^~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/behaviortree_cpp/action_node.h:55:3:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:[m[K In lambda function:
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:53:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kconfig[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   53 |         []([01;35m[Kconst BT::NodeConfiguration& config[m[K) {
+      |            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/usr/local/include/behaviortree_cpp/control_node.h:17[m[K,
+                 from [01m[K/usr/local/include/behaviortree_cpp/controls/parallel_node.h:17[m[K,
+                 from [01m[K/usr/local/include/behaviortree_cpp/behavior_tree.h:16[m[K,
+                 from [01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:27[m[K,
+                 from [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:1[m[K:
+/usr/local/include/behaviortree_cpp/tree_node.h: In instantiation of ‘[01m[Kstatic std::unique_ptr<BT::TreeNode> BT::TreeNode::Instantiate(const string&, const BT::NodeConfig&, ExtraArgs ...) [with DerivedT = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>][m[K’:
+[01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:39:45:[m[K   required from ‘[01m[KBT::NodeBuilder BT::CreateBuilder(Args ...) [with T = MoveForward; Args = {main()::<lambda(const NodeConfiguration&)>}; BT::NodeBuilder = std::function<std::unique_ptr<BT::TreeNode>(const std::__cxx11::basic_string<char>&, const BT::NodeConfig&)>][m[K’
+[01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:351:67:[m[K   required from ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, const PortsList&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>; BT::PortsList = std::unordered_map<std::__cxx11::basic_string<char>, BT::PortInfo>][m[K’
+[01m[K/usr/local/include/behaviortree_cpp/bt_factory.h:379:24:[m[K   required from ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = MoveForward; ExtraArgs = {main()::<lambda(const NodeConfiguration&)>}; std::string = std::__cxx11::basic_string<char>][m[K’
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:52:42:[m[K   required from here
+[01m[K/usr/local/include/behaviortree_cpp/tree_node.h:321:23:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMoveForward::MoveForward(const string&, main()::<lambda(const NodeConfiguration&)>&)[m[K’
+  321 |       auto node_ptr = [01;31m[Knew DerivedT(name, args...)[m[K;
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:16:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KMoveForward::MoveForward(const string&)[m[K’
+   16 |     [01;36m[KMoveForward[m[K(const std::string& name)
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:16:5:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:9:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KMoveForward::MoveForward(const string&, const NodeConfiguration&)[m[K’
+    9 |     [01;36m[KMoveForward[m[K(const std::string& name, const BT::NodeConfiguration& config)
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:9:71:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kmain()::<lambda(const NodeConfiguration&)>[m[K’ to ‘[01m[Kconst NodeConfiguration&[m[K’ {aka ‘[01m[Kconst BT::NodeConfig&[m[K’}
+    9 |     MoveForward(const std::string& name, [01;36m[Kconst BT::NodeConfiguration& config[m[K)
+      |                                          [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

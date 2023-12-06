@@ -1,0 +1,11 @@
+[0.163s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.243s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.282s] [ 50%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[0.298s] [01m[K/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/src/ros2_cpp_code.cpp:148:10:[m[K [01;31m[Kfatal error: [m[Kbehaviortree_cpp_v3/behavior_tree.h: No such file or directory
+[0.298s]   148 | #include [01;31m[K<behaviortree_cpp_v3/behavior_tree.h>[m[K
+[0.299s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.300s] compilation terminated.
+[0.300s] gmake[2]: *** [CMakeFiles/ros2_cpp_code.dir/build.make:76: CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o] Error 1
+[0.300s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/ros2_cpp_code.dir/all] Error 2
+[0.301s] gmake: *** [Makefile:146: all] Error 2
+[0.304s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
