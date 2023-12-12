@@ -178,22 +178,16 @@ my_behavior_tree implements a basic Behavior tree (BT) which inherits from behav
 
 The contents of my_behavior_tree.xml are given below,
 
-<!-- my_behavior_tree_complex.xml -->
-<root main_tree_to_execute="MainTree" BTCPP_format="4">
-  <BehaviorTree ID="MainTree">
-    <Sequence name="RootSequence">
-      <MoveForward name="MoveForward"/>
-      <TurnLeft name="TurnLeft"/>
-      <MySelector name="BatteryCheckSelector">
-        <CheckBattery name="CheckBattery"/>
-        <Sequence name="MoveTurnSequence">
-          <MoveRight name="MoveRight"/>
-          <StopMovement name="StopMovement"/>
-        </Sequence>
-      </MySelector>
-    </Sequence>
-  </BehaviorTree>
-</root>
+- **MainTree**
+  - **Sequence** (RootSequence)
+    - *MoveForward*
+    - *TurnLeft*
+    - **MySelector** (BatteryCheckSelector)
+      - *CheckBattery*
+      - **Sequence** (MoveTurnSequence)
+        - *MoveRight*
+        - *StopMovement*
+
 
 We see the following ouput in the console:
 
@@ -214,30 +208,33 @@ This package consists of the following executable files
 
 my_turtle_behavior.cpp
 
-my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to draw a **hexagon**.
+my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to trace the path in a hexagon fashion.
 
 The behavior tree is stored in the xml as follows:
 
-
-*MainTree*
-- MoveForward
-- RotateClockwise
-  - MoveForward
-  - RotateClockwise
-    - MoveForward
-    - RotateClockwise
-      - MoveForward
-      - RotateClockwise
-        - MoveForward
-        - RotateClockwise
-          - MoveForward
-          - RotateClockwise
-            - MoveForward
-            - RotateClockwise
-              - MoveForward
-              - RotateClockwise
-                - MoveForward
-                - RotateClockwise
+- **MainTree**
+  - **Sequence**
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
 
 
 Update the path in the my_turtle_behaviore.cpp file for the xml file as in your local directory before running the code.
@@ -254,7 +251,8 @@ turtlesim\
 1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
 2. execute the command <colcon build> or for particular packages use command colcon build --packages-select <name-of-pkg>
 3. execute the command <source install/setup.bash>
-4. Run the desired file by executing the command : ros2 run <package name> <access name>
+4. If the executable is for a turtlesim node run command : ros2 run turtlesim turtlesim_node
+5. Run the desired file by executing the command : ros2 run <package name> <access name>
    Access name is the same as the file name without the extension (e.g. .py for python)
 
 
