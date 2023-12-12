@@ -218,36 +218,26 @@ my_turtle_behavior implements a basic Behavior tree (BT) which inherits from beh
 
 The behavior tree is stored in the xml as follows:
 
-<root BTCPP_format="4">
-    <BehaviorTree ID="MainTree">
-        <Sequence name="DrawHexagon">
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-            </Sequence>
-        </Sequence>
-    </BehaviorTree>
-</root>
+
+*MainTree*
+- MoveForward
+- RotateClockwise
+  - MoveForward
+  - RotateClockwise
+    - MoveForward
+    - RotateClockwise
+      - MoveForward
+      - RotateClockwise
+        - MoveForward
+        - RotateClockwise
+          - MoveForward
+          - RotateClockwise
+            - MoveForward
+            - RotateClockwise
+              - MoveForward
+              - RotateClockwise
+                - MoveForward
+                - RotateClockwise
 
 
 Update the path in the my_turtle_behaviore.cpp file for the xml file as in your local directory before running the code.
