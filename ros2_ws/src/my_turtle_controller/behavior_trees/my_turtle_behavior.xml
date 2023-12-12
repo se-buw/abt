@@ -1,6 +1,10 @@
 <root BTCPP_format="4">
     <BehaviorTree ID="MainTree">
-        <Sequence name="DrawHexagon">
+        <Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
             <Sequence>
                 <Action ID="MoveForward" name="MoveForward"/>
                 <Action ID="RotateClockwise" name="RotateClockwise"/>
@@ -28,4 +32,3 @@
         </Sequence>
     </BehaviorTree>
 </root>
-
