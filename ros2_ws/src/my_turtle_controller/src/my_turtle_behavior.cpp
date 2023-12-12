@@ -8,7 +8,7 @@ http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncAction
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <chrono>
-#include <cstdlib> // For std::rand()
+//#include <cstdlib> // For std::rand()
 
 class MoveNode : public BT::SyncActionNode {
 public:
@@ -37,7 +37,7 @@ public:
         twist_publisher_->publish(std::move(twist_msg));
 
         // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(4));
+        std::this_thread::sleep_for(std::chrono::seconds(2));
 
         return BT::NodeStatus::SUCCESS;
     }
