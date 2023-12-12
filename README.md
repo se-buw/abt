@@ -250,6 +250,7 @@ turtlesim\
 ## Running the code
 1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
 2. execute the command <colcon build> or for particular packages use command colcon build --packages-select <name-of-pkg>
+
 3. execute the command <source install/setup.bash>
 4. If the executable is for a turtlesim node run command : ros2 run turtlesim turtlesim_node
 5. Run the desired file by executing the command : ros2 run <package name> <access name>
