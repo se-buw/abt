@@ -10,119 +10,89 @@ http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncAction
 #include <chrono>
 #include <cstdlib> // For std::rand()
 
+class MoveNode : public BT::SyncActionNode {
+public:
+    MoveNode(const std::string& name, double linear_speed, double angular_speed)
+        : BT::SyncActionNode(name, {}), linear_speed_(linear_speed), angular_speed_(angular_speed)
+    {
+        initializeNode();
+    }
 
-class MoveForward : public BT::SyncActionNode {
+    ~MoveNode() { //destructor
+        // cleanup before shutting down ROS
+        twist_publisher_.reset();
+        node_.reset();
+        rclcpp::shutdown();
+    }
+
+    BT::NodeStatus tick() override {
+        RCLCPP_INFO(node_->get_logger(), "[%s] Executing tick()", name().c_str());
+
+        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
+        twist_msg->linear.x = linear_speed_;
+        twist_msg->angular.z = angular_speed_;
+        //twist_publisher_->publish(std::move(twist_msg));
+
+        RCLCPP_INFO(node_->get_logger(), "Published Twist message: linear=%f, angular=%f", linear_speed_, angular_speed_);
+        twist_publisher_->publish(std::move(twist_msg));
+
+        // Simulating a running action for a short duration
+        std::this_thread::sleep_for(std::chrono::seconds(4));
+
+        return BT::NodeStatus::SUCCESS;
+    }
+
+private:
+    void initializeNode() {
+        
+        if (!rclcpp::ok()) {
+            rclcpp::init(0, nullptr);
+        }
+
+        // if publisher is not created already
+        if (!node_) {
+            node_ = rclcpp::Node::make_shared("behavior_tree_node");
+            twist_publisher_ = node_->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
+        }
+    }
+
+private:
+    static rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+    static rclcpp::Node::SharedPtr node_;
+
+    double linear_speed_;
+    double angular_speed_;
+};
+
+rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr; // Initialisation 
+rclcpp::Node::SharedPtr MoveNode::node_ = nullptr; // Initialisation
+
+class MoveForward : public MoveNode {
 public:
     MoveForward(const std::string& name)
-        : BT::SyncActionNode(name, {})
-    {
-        std::string nodeName = "move_forward_node_" + std::to_string(std::rand()); // random number for unique names
-        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-        //if (twist_publisher_==nullptr)
-        //twist_publisher_ = rclcpp::Node::make_shared("move_forward_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-    }
-
-    BT::NodeStatus tick() override {
-        // Move the turtle forward
-        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
-        twist_msg->linear.x = 2.0;  // Adjust the linear velocity
-        twist_publisher_->publish(std::move(twist_msg));
-
-        // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-
-        // Return success once the action is completed
-        return BT::NodeStatus::SUCCESS;
-    }
-
-private:
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+        : MoveNode(name, 2.0, 0.0)
+    {}
 };
 
-
-class MoveBackward : public BT::SyncActionNode {
+class MoveBackward : public MoveNode {
 public:
     MoveBackward(const std::string& name)
-        : BT::SyncActionNode(name, {})
-    {
-        std::string nodeName = "move_backward_node_" + std::to_string(std::rand());
-        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-        //twist_publisher_ = rclcpp::Node::make_shared("move_backward_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-    }
-
-    BT::NodeStatus tick() override {
-        // Move the turtle backward
-        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
-        twist_msg->linear.x = -2.0;  // Move backward
-        twist_publisher_->publish(std::move(twist_msg));
-
-        // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-
-        // success once the action is completed
-        return BT::NodeStatus::SUCCESS;
-    }
-
-private:
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+        : MoveNode(name, -2.0, 0.0)
+    {}
 };
 
-
-class RotateClockwise : public BT::SyncActionNode {
+class RotateClockwise : public MoveNode {
 public:
     RotateClockwise(const std::string& name)
-        : BT::SyncActionNode(name, {})
-    {
-        std::string nodeName = "rotate_clockwise_node_" + std::to_string(std::rand());
-        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-        //twist_publisher_ = rclcpp::Node::make_shared("rotate_clockwise_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-    }
-
-    BT::NodeStatus tick() override {
-        // Rotating the turtle clockwise
-        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
-        twist_msg->angular.z = -1.0;  // Adjust the angular velocity for clockwise rotation
-        twist_publisher_->publish(std::move(twist_msg));
-
-        // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-
-        // Returning success once the action is completed
-        return BT::NodeStatus::SUCCESS;
-    }
-
-private:
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+        : MoveNode(name, 0.0, -1.0)
+    {}
 };
 
-
-
-// Action Node: RotateCounterClockwise
-class RotateCounterClockwise : public BT::SyncActionNode {
+class RotateCounterClockwise : public MoveNode {
 public:
     RotateCounterClockwise(const std::string& name)
-        : BT::SyncActionNode(name, {})
-    {
-        std::string nodeName = "rotate_counterclockwise_node_" + std::to_string(std::rand());
-        twist_publisher_ = rclcpp::Node::make_shared(nodeName)->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-        //twist_publisher_ = rclcpp::Node::make_shared("rotate_counterclockwise_node")->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
-    }
-
-    BT::NodeStatus tick() override {
-        // Rotating the turtle counterclockwise
-        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
-        twist_msg->angular.z = 1.0;  // Adjust the angular velocity for counterclockwise rotation
-        twist_publisher_->publish(std::move(twist_msg));
-
-        // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-
-        // Returning success once the action is completed
-        return BT::NodeStatus::SUCCESS;
-    }
-
-private:
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
+        : MoveNode(name, 0.0, 1.0)
+    {}
 };
 
 int main() {
@@ -131,7 +101,7 @@ int main() {
 
     BT::BehaviorTreeFactory factory;
 
-    // Registering the MoveForward, MoveBackward, RotateClockwise, TurnLeft, and RotateCounterClockwise node types
+    // Registering the MoveNode types
     factory.registerNodeType<MoveForward>("MoveForward");
     factory.registerNodeType<MoveBackward>("MoveBackward");
     factory.registerNodeType<RotateClockwise>("RotateClockwise");
@@ -144,8 +114,6 @@ int main() {
     // Running the Behavior Tree
     tree.rootNode()->executeTick();
 
-    // ROS 2 shutdown
     rclcpp::shutdown();
-
     return 0;
 }
