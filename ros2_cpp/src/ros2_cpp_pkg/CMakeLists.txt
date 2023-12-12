@@ -19,7 +19,6 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(behaviortree_cpp REQUIRED)  # Adjust the package name/version
-#find_package(behaviortree_cpp_v3 REQUIRED)
 
 # Add include directories
 include_directories(
@@ -27,9 +26,8 @@ include_directories(
   ${geometry_msgs_INCLUDE_DIRS}
   ${turtlesim_INCLUDE_DIRS}
   ${behaviortree_cpp_INCLUDE_DIRS}  # Adjust the variable name if needed
- # ${behaviortree_cpp_v3_INCLUDE_DIRS}
 )
-
+############################################################################################
 # Create executable for ros2_cpp_code
 add_executable(ros2_cpp_code src/ros2_cpp_code.cpp)
 
@@ -39,11 +37,27 @@ ament_target_dependencies(ros2_cpp_code
   geometry_msgs
   turtlesim
   behaviortree_cpp  # Adjust the package name/version
-  #behaviortree_cpp_v3
 )
 
 install(TARGETS
   ros2_cpp_code
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+#############################################################################################
+# Create executable for behavior_tree
+add_executable(behavior_tree src/behavior_tree.cpp)
+
+# Link against libraries for behavior_tree
+ament_target_dependencies(behavior_tree
+  rclcpp
+  geometry_msgs
+  turtlesim
+  behaviortree_cpp  # Adjust the package name/version
+)
+# Install behavior_tree
+install(TARGETS
+  behavior_tree
   DESTINATION lib/${PROJECT_NAME}
 )
 

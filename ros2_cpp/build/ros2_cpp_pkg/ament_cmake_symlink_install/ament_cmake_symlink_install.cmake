@@ -313,6 +313,12 @@ message(STATUS "Execute custom install script")
 # install("TARGETS" "ros2_cpp_code" "DESTINATION" "lib/ros2_cpp_pkg")
 include("/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
+# install("TARGETS" "draw_circle" "DESTINATION" "lib/ros2_cpp_pkg")
+include("/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_symlink_install_targets_1_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
+# install("TARGETS" "behavior_tree" "DESTINATION" "lib/ros2_cpp_pkg")
+include("/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
 # install(FILES "/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/ros2_cpp_pkg" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/bhanu/ros2_cpp/src/ros2_cpp_pkg" FILES "/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/ros2_cpp_pkg" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 

@@ -1,0 +1,28 @@
+[0.134s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[0.231s] [35m[1mConsolidate compiler generated dependencies of target ros2_cpp_code[0m
+[0.257s] [ 50%] Built target draw_circle
+[0.269s] [ 75%] [32mBuilding CXX object CMakeFiles/ros2_cpp_code.dir/src/ros2_cpp_code.cpp.o[0m
+[7.660s] [100%] [32m[1mLinking CXX executable ros2_cpp_code[0m
+[8.099s] [100%] Built target ros2_cpp_code
+[8.117s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --build /home/bhanu/ros2_cpp/build/ros2_cpp_pkg -- -j4 -l4
+[8.185s] Invoking command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/bhanu/ros2_cpp/build/ros2_cpp_pkg
+[8.204s] -- Install configuration: ""
+[8.206s] -- Execute custom install script
+[8.206s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/lib/ros2_cpp_pkg/ros2_cpp_code
+[8.207s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/lib/ros2_cpp_pkg/draw_circle
+[8.207s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ament_index/resource_index/package_run_dependencies/ros2_cpp_pkg
+[8.207s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ament_index/resource_index/parent_prefix_path/ros2_cpp_pkg
+[8.207s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/environment/ament_prefix_path.sh
+[8.208s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/environment/ament_prefix_path.dsv
+[8.208s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/environment/path.sh
+[8.208s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/environment/path.dsv
+[8.209s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/local_setup.bash
+[8.209s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/local_setup.sh
+[8.209s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/local_setup.zsh
+[8.209s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/local_setup.dsv
+[8.210s] -- Symlinking: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/package.dsv
+[8.232s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ament_index/resource_index/packages/ros2_cpp_pkg
+[8.232s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/cmake/ros2_cpp_pkgConfig.cmake
+[8.233s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/cmake/ros2_cpp_pkgConfig-version.cmake
+[8.233s] -- Up-to-date symlink: /home/bhanu/ros2_cpp/install/ros2_cpp_pkg/share/ros2_cpp_pkg/package.xml
+[8.233s] Invoked command in '/home/bhanu/ros2_cpp/build/ros2_cpp_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/bhanu/ros2_ws/install/my_robot_controller:/opt/ros/humble /usr/bin/cmake --install /home/bhanu/ros2_cpp/build/ros2_cpp_pkg
