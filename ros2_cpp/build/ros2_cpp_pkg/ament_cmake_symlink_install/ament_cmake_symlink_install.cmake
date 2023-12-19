@@ -360,3 +360,6 @@ ament_cmake_symlink_install_files("/home/bhanu/ros2_cpp/src/ros2_cpp_pkg" FILES 
 
 # install(FILES "/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/package.xml" "DESTINATION" "share/ros2_cpp_pkg")
 ament_cmake_symlink_install_files("/home/bhanu/ros2_cpp/src/ros2_cpp_pkg" FILES "/home/bhanu/ros2_cpp/src/ros2_cpp_pkg/package.xml" "DESTINATION" "share/ros2_cpp_pkg")
+
+# install("TARGETS" "bt_gazebo1" "DESTINATION" "lib/ros2_cpp_pkg")
+include("/home/bhanu/ros2_cpp/build/ros2_cpp_pkg/ament_cmake_symlink_install_targets_3_${CMAKE_INSTALL_CONFIG_NAME}.cmake")

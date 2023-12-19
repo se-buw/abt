@@ -43,7 +43,6 @@ install(TARGETS
   ros2_cpp_code
   DESTINATION lib/${PROJECT_NAME}
 )
-
 #############################################################################################
 # Create executable for behavior_tree
 add_executable(behavior_tree src/behavior_tree.cpp)
@@ -63,3 +62,20 @@ install(TARGETS
 
 
 ament_package()
+############################################################################################
+# Create executable for bt_gazebo1
+add_executable(bt_gazebo1 src/bt_gazebo1.cpp)
+
+# Link against libraries for bt_gazebo1
+ament_target_dependencies(bt_gazebo1
+  rclcpp
+  geometry_msgs
+  turtlesim
+  behaviortree_cpp  # Adjust the package name/version
+)
+
+# Install bt_gazebo1
+install(TARGETS
+  bt_gazebo1
+  DESTINATION lib/${PROJECT_NAME}
+)
