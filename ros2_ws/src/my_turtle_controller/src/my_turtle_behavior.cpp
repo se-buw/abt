@@ -108,7 +108,7 @@ int main() {
     factory.registerNodeType<RotateCounterClockwise>("RotateCounterClockwise");
 
     // Loading the behavior tree from an external XML file
-    std::string xml_filename = "/home/parallels/abt/ros2_ws/src/my_turtle_controller/behavior_trees/my_turtle_behavior.xml";
+    std::string xml_filename = "src/my_turtle_controller/behavior_trees/my_turtle_behavior.xml";
     auto tree = factory.createTreeFromFile(xml_filename);
 
     // Running the Behavior Tree
