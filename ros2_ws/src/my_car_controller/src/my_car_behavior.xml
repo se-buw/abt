@@ -1,0 +1,37 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <Sequence>
+                <Action ID="Halt" name="Halt"/>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+            </Sequence>
+            <Sequence>
+                <Action ID="MoveForward" name="MoveForward"/>
+                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="Halt" name="Halt"/>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+</root>
+
