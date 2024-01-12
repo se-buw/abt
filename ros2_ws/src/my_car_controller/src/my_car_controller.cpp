@@ -8,48 +8,69 @@ http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncAction
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <chrono>
-//#include <cstdlib> // For std::rand()
+#include <thread>
 
 class MoveNode : public BT::SyncActionNode {
 public:
-    MoveNode(const std::string& name, double linear_speed, double angular_speed)
-        : BT::SyncActionNode(name, {}), linear_speed_(linear_speed), angular_speed_(angular_speed)
+ MoveNode(const std::string& name, const BT::NodeConfiguration& config)
+        : BT::SyncActionNode(name, config), linear_speed_(0.0), angular_speed_(0.0), sleep_duration_(2)
+    
     {
         initializeNode();
     }
 
-    ~MoveNode() { //destructor
-        // cleanup before shutting down ROS
+    ~MoveNode() override { // Destructor
+        // Cleanup before shutting down ROS
         twist_publisher_.reset();
         node_.reset();
         rclcpp::shutdown();
     }
 
     BT::NodeStatus tick() override {
-        RCLCPP_INFO(node_->get_logger(), "[%s] Executing tick()", name().c_str());
+        
 
-        auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
-        twist_msg->linear.x = linear_speed_;
-        twist_msg->angular.z = angular_speed_;
-        //twist_publisher_->publish(std::move(twist_msg));
 
-        RCLCPP_INFO(node_->get_logger(), "Published Twist message: linear=%f, angular=%f", linear_speed_, angular_speed_);
-        twist_publisher_->publish(std::move(twist_msg));
+        // Extracting parameters from NodeConfiguration using name()
+        BT::Expected<double> linear_speed = getInput<double>("linear_speed");
+        BT::Expected<double> angular_speed = getInput<double>("angular_speed");
+        BT::Expected<double> sleep_duration = getInput<double>("sleep_duration");
 
-        // Simulating a running action for a short duration
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        // Checking if expected values are valid. If not, throwing their errors.
+        if (!linear_speed || !angular_speed) {
+            throw BT::RuntimeError("Failed to retrieve required input parameters");
+        }
 
-        return BT::NodeStatus::SUCCESS;
+        // Storing the values in member variables
+        linear_speed_ = *linear_speed;
+        angular_speed_ = *angular_speed;
+        sleep_duration_ = *sleep_duration;
+
+        RCLCPP_INFO(node_->get_logger(), "[%s] Executing tick() with parameters linear=%f, angular=%f", //logging info in the terminal
+            name().c_str(), *linear_speed, *angular_speed);
+
+            auto twist_msg = std::make_unique<geometry_msgs::msg::Twist>();
+            twist_msg->linear.x = linear_speed_;
+            twist_msg->angular.z = angular_speed_;
+            twist_publisher_->publish(std::move(twist_msg));
+
+            // Simulating a running action for the specified duration
+            std::this_thread::sleep_for(std::chrono::seconds(static_cast<int>(sleep_duration_)));
+
+            return BT::NodeStatus::SUCCESS;
+       
+    }
+
+    static BT::PortsList providedPorts() { // method for declaring the ports
+        return { BT::InputPort<double>("linear_speed"), BT::InputPort<double>("angular_speed"), BT::InputPort<double>("sleep_duration")};
     }
 
 private:
     void initializeNode() {
-        
         if (!rclcpp::ok()) {
             rclcpp::init(0, nullptr);
         }
 
-        // if publisher is not created already
+        // If the publisher is not created, then
         if (!node_) {
             node_ = rclcpp::Node::make_shared("behavior_tree_node");
             twist_publisher_ = node_->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
@@ -62,45 +83,13 @@ private:
 
     double linear_speed_;
     double angular_speed_;
+    double sleep_duration_;
 };
 
-rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr; // ROS2 publisher Initialisation 
-rclcpp::Node::SharedPtr MoveNode::node_ = nullptr; // ROS2 Node Initialisation
+rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr; // ROS2 publisher Initialization
+rclcpp::Node::SharedPtr MoveNode::node_ = nullptr; // ROS2 Node Initialization
 
-class MoveForward : public MoveNode {
-public:
-    MoveForward(const std::string& name)
-        : MoveNode(name, 2.0, 0.0)
-    {}
-};
 
-class MoveBackward : public MoveNode {
-public:
-    MoveBackward(const std::string& name)
-        : MoveNode(name, -2.0, 0.0)
-    {}
-};
-
-class RotateClockwise : public MoveNode {
-public:
-    RotateClockwise(const std::string& name)
-        : MoveNode(name, 0.0, -1.0)
-    {}
-};
-
-class RotateCounterClockwise : public MoveNode {
-public:
-    RotateCounterClockwise(const std::string& name)
-        : MoveNode(name, 0.0, 1.0)
-    {}
-};
-
-class Halt : public MoveNode {
-public:
-    Halt(const std::string& name)
-        : MoveNode(name, 0.0, 0.0)
-    {}
-};
 
 int main() {
     // ROS 2 initialization
@@ -108,12 +97,8 @@ int main() {
 
     BT::BehaviorTreeFactory factory;
 
-    // Registering the MoveNode types
-    factory.registerNodeType<MoveForward>("MoveForward");
-    factory.registerNodeType<MoveBackward>("MoveBackward");
-    factory.registerNodeType<RotateClockwise>("RotateClockwise");
-    factory.registerNodeType<RotateCounterClockwise>("RotateCounterClockwise");
-    factory.registerNodeType<Halt>("Halt");
+    // Registering the MoveNode type
+    factory.registerNodeType<MoveNode>("MoveNode");
 
     // Loading the behavior tree from an external XML file
     std::string xml_filename = "src/my_car_controller/behavior_trees/my_car_behavior.xml";
@@ -125,4 +110,5 @@ int main() {
     rclcpp::shutdown();
     return 0;
 }
+
 
