@@ -5,7 +5,7 @@
 ## Getting started
 Consists of a ros2 workspace
 
-
+Consists of the Gazebo .sdf files for simulating 3D environment and vehicles.
 
 ## Package
 #### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
@@ -209,7 +209,7 @@ This package consists of the following executable files
 
 my_turtle_behavior.cpp
 
-my_turtle_behavior implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to trace the path in a hexagon fashion.
+my_turtle_behavior implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to trace the path in a hexagon fashion.
 
 The behavior tree is stored in the xml as follows:
 
@@ -249,10 +249,63 @@ turtlesim\
 
 #### 5. my_car_controller
 
+This package consists of the following executable files
+
+my_car_controller.cpp
+
+my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car.
+
+The behavior tree is stored in the xml as follows:
+
+- **MainTree**
+  - **Sequence**
+    - **Sequence**
+      - *Halt*
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+      - *Halt*
 
 
+Update the path in the my_car_controller.cpp file for the xml file as in your local directory before running the code.
 
-## Running the code
+
+The Gazebo bot can be run using the command "ign gazebo basic_robot.sdf". The command should be run by opening a terminal in the file location.
+The bridge to the topic cmd_vel between ROS2 and Gazebo is established by running the command in the terminal at the home directory "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
+
+Run the file following the instructions at the end and using the name my_car_controller.
+
+#### Dependencies
+behaviortree_cpp\
+rclcpp\
+geometry_msgs\
+turtlesim\
+
+## Gazebo files
+1. basic_robot.sdf
+
+Reference : https://github.com/gazebosim/docs/blob/master/fortress/tutorials/moving_robot/moving_robot.sdf
+
+It is a 3D world with a differential wheel robot.
+
+## Running the executable in the ROS2 workspace
 1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
 2. execute the command "colcon build" or for particular packages use command : "colcon build --packages-select name-of-pkg"
 
@@ -262,6 +315,8 @@ turtlesim\
    Access name is the same as the file name without the extension (e.g. .py for python)
 
 
-
+## Running Gazebo files
+1. For Gazebo Fottress use the command "ign gazebo file_name.sdf"
+2. To establish a bridge between ROS2 ansd Gazebo topic run the command "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
 
 
