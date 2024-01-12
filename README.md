@@ -12,7 +12,7 @@ Consists of the Gazebo .sdf files for simulating 3D environment and vehicles.
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 #### 3. BehaviorTree.CPP: C++ library for creating behavior trees
 #### 4. [my_turtle_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#4-my_turtle_controller-1)
-#### 5. my_car_controller
+#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1)
 
 #### 1. my_robot_controller
 This package consists of the following files
@@ -303,7 +303,7 @@ turtlesim\
 
 Reference : https://github.com/gazebosim/docs/blob/master/fortress/tutorials/moving_robot/moving_robot.sdf
 
-It is a 3D world with a differential wheel robot.
+It is a 3D world with a differential drive robot.
 
 ## Running the executable in the ROS2 workspace
 1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
