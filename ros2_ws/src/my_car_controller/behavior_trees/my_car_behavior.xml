@@ -2,34 +2,34 @@
     <BehaviorTree ID="MainTree">
         <Sequence>
             <Sequence>
-                <Action ID="Halt" name="Halt"/>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
             </Sequence>
             <Sequence>
-                <Action ID="MoveForward" name="MoveForward"/>
-                <Action ID="RotateClockwise" name="RotateClockwise"/>
-                <Action ID="Halt" name="Halt"/>
+                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
+                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="0.0"/>
             </Sequence>
         </Sequence>
     </BehaviorTree>
