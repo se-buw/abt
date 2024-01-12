@@ -296,7 +296,7 @@ Run the file following the instructions at the end and using the name my_car_con
 behaviortree_cpp\
 rclcpp\
 geometry_msgs\
-turtlesim\
+
 
 ## Gazebo files
 1. basic_robot.sdf
