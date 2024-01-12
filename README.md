@@ -251,7 +251,7 @@ turtlesim\
 
 This package consists of the following executable files
 
-my_car_controller.cpp
+- my_car_controller.cpp
 
 my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car.
 
