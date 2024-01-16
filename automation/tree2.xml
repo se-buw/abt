@@ -1,0 +1,42 @@
+<root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Selector name="MainSelector">
+            <Sequence name="Initialization">
+                <Action name="CheckSensors"/>
+                <Action name="CalibrateSensors"/>
+                <Action name="StartEngine"/>
+            </Sequence>
+            <Selector name="TaskSelector">
+                <Sequence name="NavigateToDestination">
+                    <Action name="ReceiveDestination"/>
+                    <Action name="PlanRoute"/>
+                    <Action name="FollowWaypoints"/>
+                    <Action name="ArriveAtDestination"/>
+                </Sequence>
+                <Sequence name="ObstacleAvoidance">
+                    <Action name="DetectObstacles"/>
+                    <Selector name="AvoidanceStrategy">
+                        <Sequence name="BrakeAndSteer">
+                            <Action name="ApplyBrakes"/>
+                            <Action name="SteerAway"/>
+                        </Sequence>
+                        <Sequence name="ChangeLane">
+                            <Action name="CheckLaneChangeConditions"/>
+                            <Action name="PerformLaneChange"/>
+                        </Sequence>
+                    </Selector>
+                </Sequence>
+                <Selector name="ParkingSelector">
+                    <Sequence name="ParallelParking">
+                        <Action name="SearchParkingSpace"/>
+                        <Action name="ParallelPark"/>
+                    </Sequence>
+                    <Sequence name="PerpendicularParking">
+                        <Action name="SearchParkingSpace2"/>
+                        <Action name="PerpendicularPark"/>
+                    </Sequence>
+                </Selector>
+            </Selector>
+        </Selector>
+    </BehaviorTree>
+</root>
