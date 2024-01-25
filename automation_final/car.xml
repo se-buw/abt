@@ -1,0 +1,32 @@
+<root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Selector name="MainSelector">
+            <Sequence name="Pre-OperationalChecks">
+                <Action name="SelfDiagnostics"/>
+                <Action name="EnvironmentAssessment"/>
+                <Action name="UserSettingsCheck"/>
+            </Sequence>
+            <Selector name="DrivingModeSelector">
+                <Sequence name="ManualControl">
+                    <Action name="EnableManualControls"/>
+                    <Action name="MonitorManualOperation"/>
+                </Sequence>
+                <Sequence name="AutonomousNavigation">
+                    <Action name="SetDestination"/>
+                    <Action name="CalculateRoute"/>
+                    <Action name="AutonomousDrive"/>
+                    <Action name="DestinationReached"/>
+                </Sequence>
+                <Sequence name="Parking">
+                    <Action name="TurnOnIndicators"/>
+                    <Action name="ProceedToPark"/>
+                </Sequence>
+            </Selector>
+            <Sequence name="EmergencyHandling">
+                <Action name="DetectEmergency"/>
+                <Action name="ActivateSafetyProtocols"/>
+                <Action name="NotifyEmergencyServices"/>
+            </Sequence>
+        </Selector>
+    </BehaviorTree>
+</root>
