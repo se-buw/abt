@@ -1,0 +1,94 @@
+MODULE main
+
+VAR MoveToAttackPosition : boolean;
+VAR EquipWeapon : boolean;
+VAR AttackEnemy : boolean;
+VAR FindCoverSpot : boolean;
+VAR MoveToCover : boolean;
+VAR SecurePosition : boolean;
+VAR CommunicateStatus : boolean;
+VAR EvaluateOptions : boolean;
+VAR QuitGame : boolean;
+VAR StartNewGame : boolean;
+
+VAR
+	Node: {MoveToAttackPositionX, EquipWeaponX, AttackEnemyX, FindCoverSpotX, MoveToCoverX, SecurePositionX, CommunicateStatusX, EvaluateOptionsX, QuitGameX, StartNewGameX, Done};
+
+INIT
+	Node = MoveToAttackPositionX;
+
+ASSIGN
+  next(MoveToAttackPosition) := 
+    case
+      next(Node) = MoveToAttackPositionX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(EquipWeapon) := 
+    case
+      next(Node) = EquipWeaponX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(AttackEnemy) := 
+    case
+      next(Node) = AttackEnemyX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(FindCoverSpot) := 
+    case
+      next(Node) = FindCoverSpotX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(MoveToCover) := 
+    case
+      next(Node) = MoveToCoverX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(SecurePosition) := 
+    case
+      next(Node) = SecurePositionX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(CommunicateStatus) := 
+    case
+      next(Node) = CommunicateStatusX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(EvaluateOptions) := 
+    case
+      next(Node) = EvaluateOptionsX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(QuitGame) := 
+    case
+      next(Node) = QuitGameX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(StartNewGame) := 
+    case
+      next(Node) = StartNewGameX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(Node) :=
+    case
+      Node = MoveToAttackPositionX : {EquipWeaponX, Done};
+      Node = EquipWeaponX : {AttackEnemyX, Done};
+      Node = AttackEnemyX : {CommunicateStatusX, Done};
+      Node = FindCoverSpotX : {MoveToCoverX, StartNewGameX};
+      Node = MoveToCoverX : {SecurePositionX, StartNewGameX};
+      Node = SecurePositionX : {CommunicateStatusX, StartNewGameX};
+      Node = CommunicateStatusX : {EvaluateOptionsX, QuitGameX};
+      Node = EvaluateOptionsX : {Done, QuitGameX};
+      Node = QuitGameX : {Done, StartNewGameX};
+      Node = StartNewGameX : {Done};
+      TRUE : Done;
+    esac;
