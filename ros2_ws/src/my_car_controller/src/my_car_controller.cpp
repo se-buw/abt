@@ -3,14 +3,16 @@ https://www.behaviortree.dev/
 http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncActionNode.html 
 */
 
-#include <behaviortree_cpp/bt_factory.h>
 #include <behaviortree_cpp/behavior_tree.h>
+#include <behaviortree_cpp/bt_factory.h>
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/logging.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <sensor_msgs/msg/laser_scan.hpp>
 #include <chrono>
 #include <thread>
 #include <memory>
+#include <std_msgs/msg/bool.hpp> //  header for boolean messages
 
 class MoveNode : public BT::SyncActionNode {
 public:
@@ -22,6 +24,7 @@ public:
 
     ~MoveNode() override {
         twist_publisher_.reset();
+        node_.reset();
         rclcpp::shutdown();
     }
 
@@ -65,9 +68,9 @@ public:
 
 private:
     void initializeNode() {
-        if (!rclcpp::ok()) {
-            rclcpp::init(0, nullptr);
-        }
+        //if (!rclcpp::ok()) {
+          //rclcpp::init(0, nullptr);
+        //}
 
         // Creating a node if not already created
         if (!node_) {
@@ -77,7 +80,7 @@ private:
     }
 
     static rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_publisher_;
-    rclcpp::Node::SharedPtr node_;
+    static rclcpp::Node::SharedPtr node_;
 
     double linear_speed_;
     double angular_speed_;
@@ -85,103 +88,182 @@ private:
 };
 
 rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr;
+rclcpp::Node::SharedPtr MoveNode::node_ = nullptr;
 
-class LidarNode : public rclcpp::Node {
+class LidarNode : public BT::StatefulActionNode
+{
 public:
-    LidarNode()
-        : Node("lidar_node"), lidar_subscription_(create_subscription<sensor_msgs::msg::LaserScan>(
-                                     "/lidar", 10, [this](const sensor_msgs::msg::LaserScan::SharedPtr msg) {
-                                         handleLidarMessage(msg);
-                                     })),
-          latest_lidar_ranges_()
+    LidarNode(const std::string& name, const BT::NodeConfig& config)
+        : BT::StatefulActionNode(name, config), threshold_(1.0), lidar_message_received_(false)
     {
+        // Initializing ROS 2 node and subscription
+        node_ = std::make_shared<rclcpp::Node>("lidar_node");
+        subscription_ = node_->create_subscription<sensor_msgs::msg::LaserScan>(
+            "/lidar", 100, [this](const sensor_msgs::msg::LaserScan::SharedPtr msg) {
+                handleLidarMessage(msg);
+            });
     }
 
-    const std::vector<double>& getLatestLidarRanges() const {
-        return latest_lidar_ranges_;
+    static BT::PortsList providedPorts()
+    {
+        return { BT::InputPort<double>("threshold") };
     }
+
+    BT::NodeStatus onStart() override;
+
+    BT::NodeStatus onRunning() override;
+
+    void onHalted() override;
+
+    void handleLidarMessage(const sensor_msgs::msg::LaserScan::SharedPtr msg);
 
 private:
-   void handleLidarMessage(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
-    RCLCPP_INFO(get_logger(), "Received Lidar message with %lu ranges", msg->ranges.size());
+    double threshold_;
+    std::vector<double> latest_lidar_ranges_;
+    rclcpp::Node::SharedPtr node_;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr subscription_;
+    bool lidar_message_received_;
+};
 
-    // Converting the ranges from float to double
-    latest_lidar_ranges_.clear();
-    std::transform(msg->ranges.begin(), msg->ranges.end(), std::back_inserter(latest_lidar_ranges_), 
-                   [](float value) { return static_cast<double>(value); });
+BT::NodeStatus LidarNode::onStart()
+{
+    // Retrieve the threshold parameter
+    if (!getInput<double>("threshold", threshold_))
+    {
+        throw BT::RuntimeError("Failed to retrieve parameter [threshold] in LidarNode");
+    }
+
+    return BT::NodeStatus::RUNNING;
+}
+
+BT::NodeStatus LidarNode::onRunning()
+{
+    if (!lidar_message_received_) {
+        // Lidar message not received yet, logging an error and returning FAILURE
+        RCLCPP_ERROR(node_->get_logger(), "Failed to retrieve Lidar messages");
+        return BT::NodeStatus::RUNNING;
+    }
+
+    // Processing lidar data and updating node status directly
+    if (std::any_of(latest_lidar_ranges_.begin(), latest_lidar_ranges_.end(),
+        [this](double range) { return range < threshold_; }))
+    {
+        return BT::NodeStatus::FAILURE;
+    }
+    else
+    {
+        return BT::NodeStatus::RUNNING;
+    }
 }
 
 
-    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_subscription_;
-    std::vector<double> latest_lidar_ranges_;
-};
+void LidarNode::onHalted()
+{
+    // Cleaning up ROS 2 resources
+    subscription_.reset();
+    node_.reset();
+    rclcpp::shutdown();
+}
 
-class CheckLidarCondition : public BT::ConditionNode {
-public:
-    CheckLidarCondition(const std::string& name, const BT::NodeConfiguration& config, std::shared_ptr<LidarNode> lidar_node)
-        : BT::ConditionNode(name, config), lidar_node_(lidar_node)
+void LidarNode::handleLidarMessage(const sensor_msgs::msg::LaserScan::SharedPtr msg)
+{
+    // Storing lidar message
+    latest_lidar_ranges_.clear();
+    std::transform(msg->ranges.begin(), msg->ranges.end(), std::back_inserter(latest_lidar_ranges_),
+        [](float value) { return static_cast<double>(value); });
+
+    // Comparing lidar ranges against threshold
+    lidar_message_received_ = true;
+
+    if (std::any_of(latest_lidar_ranges_.begin(), latest_lidar_ranges_.end(),
+        [this](double range) { return range < threshold_; }))
     {
-        // Setting a default threshold value
-        config.blackboard->set("threshold", 1.0);
+        setStatus(BT::NodeStatus::FAILURE);
+    }
+    else
+    {
+        setStatus(BT::NodeStatus::RUNNING);
+    }
+}
+
+class ContactNode : public BT::StatefulActionNode
+
+{
+public:
+    ContactNode(const std::string& name, const BT::NodeConfig& config)
+        : BT::StatefulActionNode(name, config), contact_detected_(false)
+    {
+        // Initializing ROS 2 node and subscription
+        node_ = rclcpp::Node::make_shared("contact_node");
+        subscription_ = node_->create_subscription<std_msgs::msg::Bool>(
+            "/wall/touched", 100, [this](const std_msgs::msg::Bool::SharedPtr msg) {
+                handleContactMessage(msg);
+            });
     }
 
-    BT::NodeStatus tick() override {
-        double threshold;
-        if (!getInput<double>("threshold", threshold)) {
-            throw BT::RuntimeError("Failed to retrieve parameter [threshold] in CheckLidarCondition");
-        }
-
-        auto lidar_ranges = lidar_node_->getLatestLidarRanges();
-
-        for (const auto& range : lidar_ranges) {
-            if (range < threshold) {
-                // If any range is less than the threshold, the condition is true
-                return BT::NodeStatus::SUCCESS;
-            }
-        }
-
-        // If no range is less than the threshold, the condition is false
-        return BT::NodeStatus::FAILURE;
+    static BT::PortsList providedPorts()
+    {
+        return {};
     }
 
-    static BT::PortsList providedPorts() {
-        return {
-            BT::InputPort<double>("threshold"),
-        };
+    BT::NodeStatus onStart() override
+    {
+        return BT::NodeStatus::RUNNING;
+    }
+
+    BT::NodeStatus onRunning() override
+    {
+        if (!contact_detected_) {
+            // Contact message not received yet, logging an error and returning FAILURE
+            RCLCPP_ERROR(node_->get_logger(), "Failed to detect contact");
+            return BT::NodeStatus::RUNNING;
+        }
+
+        // Contact detected, returning SUCCESS
+        return BT::NodeStatus::SUCCESS;
+    }
+
+    void onHalted() override
+    {
+        // Cleaning up ROS 2 resources
+        subscription_.reset();
+        node_.reset();
+        rclcpp::shutdown();
     }
 
 private:
-    std::shared_ptr<LidarNode> lidar_node_;
+    void handleContactMessage(const std_msgs::msg::Bool::SharedPtr msg)
+    {
+        contact_detected_ = msg->data;
+    }
+
+    bool contact_detected_;
+    rclcpp::Node::SharedPtr node_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr subscription_;
 };
 
 int main() {
+    // Initializing ROS 2 node
     rclcpp::init(0, nullptr);
+    auto node = std::make_shared<rclcpp::Node>("bt_node");
 
+    // Creating Behavior Tree factory and registeing Nodes
     BT::BehaviorTreeFactory factory;
     factory.registerNodeType<MoveNode>("MoveNode");
-    factory.registerNodeType<CheckLidarCondition>("CheckLidar");
+    factory.registerNodeType<LidarNode>("LidarNode");
+    factory.registerNodeType<ContactNode>("ContactNode");
 
-    // shared pointer to LidarNode
-    auto lidar_node = std::make_shared<LidarNode>();
-
-    // CheckLidarCondition node with the shared pointer to LidarNode
-    auto check_lidar_condition = std::make_shared<CheckLidarCondition>("CheckLidar", BT::NodeConfiguration(), lidar_node);
-
-
-    // Registering CheckLidarCondition node in the behavior tree factory
-    factory.registerSimpleCondition("CheckLidar", check_lidar_condition);
-
-
+    // Loading the behavior tree from XML file
     std::string xml_filename = "src/my_car_controller/behavior_trees/my_car_behavior.xml";
     auto tree = factory.createTreeFromFile(xml_filename);
 
-    while (rclcpp::ok()) {
-        tree.rootNode()->executeTick();
-        rclcpp::spin_some(lidar_node);
+    // Executing behavior tree
+    while (rclcpp::ok() && tree.rootNode()->executeTick() == BT::NodeStatus::RUNNING) {
+        rclcpp::spin_some(node);
     }
 
+    // Shutting down ROS 2 node
     rclcpp::shutdown();
+
     return 0;
 }
-
-
