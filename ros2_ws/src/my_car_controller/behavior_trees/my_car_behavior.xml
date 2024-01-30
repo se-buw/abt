@@ -1,37 +1,17 @@
-<root BTCPP_format="4">
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
     <BehaviorTree ID="MainTree">
-        <Sequence>
+        <ReactiveSequence name="MainSequence">
+            <MoveNode name="Move" linear_speed="1.0" angular_speed="0.0" sleep_duration="2"/>
+            <MoveNode name="Move" linear_speed="0.0" angular_speed="0.5" sleep_duration="2"/>
+            <MoveNode name="Move" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>
+            <Fallback name="LidarAndContactFallback">
+                <LidarNode name="Lidar" threshold="1.0"/>
+                <ContactNode name="Contact"/> 
+            </Fallback>
             <Sequence>
-                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
+                <MoveNode name="Move" linear_speed="0.0" angular_speed="0.5" sleep_duration="2"/>
             </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-            </Sequence>
-            <Sequence>
-                <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="3.0"/>
-                <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-1.0" sleep_duration="2.0"/>
-                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="0.0"/>
-            </Sequence>
-        </Sequence>
+        </ReactiveSequence>
     </BehaviorTree>
 </root>
 
