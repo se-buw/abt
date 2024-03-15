@@ -1,0 +1,28 @@
+<root main_tree_to_execute="Root">
+    <BehaviorTree ID="Root">
+        <Selector name="GameOptions">
+            <Sequence name = "DesicionMaking">
+                <Selector name="AttackOrCover">
+                    <Sequence name="Attack">
+                        <Action name="MoveToAttackPosition"/>
+                        <Action name="EquipWeapon"/>
+                        <Action name="AttackEnemy"/>
+                    </Sequence>
+                    <Sequence name="Cover">
+                        <Action name="FindCoverSpot"/>
+                        <Action name="MoveToCover"/>
+                        <Action name="SecurePosition"/>
+                    </Sequence>
+                </Selector>
+                <Selector name="Options">
+                    <Sequence name="Communication">
+                        <Action name="CommunicateStatus"/>
+                        <Action name="EvaluateOptions"/>
+                    </Sequence>
+                    <Action name="QuitGame"/>
+                </Selector>
+            </Sequence>
+            <Action name="StartNewGame"/>
+        </Selector>
+    </BehaviorTree>
+</root>
