@@ -1,1 +1,29 @@
-
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence name ="Start">
+                <Action ID="LidarNode" name="LidarNode" threshold= "1"/>
+                <Action ID="MoveNode" name="TurnAround" linear_speed="0.0" angular_speed="6.28" sleep_duration="3"/>
+            <Fallback name="Navigation Options"> 
+                <Sequence name="Turn Right">   
+                    <Action ID="MoveNode" name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="2"/>
+                    <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <LidarNode name="LidarNode" threshold= "2"/>
+                </Sequence>
+                <Sequence name ="Reverse and Turn Right">
+                    <Action ID="MoveNode" name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="2"/>
+                    <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <Action ID="MoveNode" name="TurnLeft" linear_speed="0.0" angular_speed="0.5" sleep_duration="2"/>
+                    <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <Action ID="LidarNode" name="LidarNode" threshold= "3"/>
+                </Sequence>
+            </Fallback>
+            <Sequence name= "Reverse and Turn Around">
+                <Action ID="MoveNode" name="Reverse" linear_speed="-0.5" angular_speed="0.0" sleep_duration="4"/>
+                <Action ID="MoveNode" name="TurnAround" linear_speed="0.0" angular_speed="6.28" sleep_duration="1"/>   
+                <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="15"/>
+                <Action ID="LidarNode" name="LidarNode" threshold= "3"/>
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>
+            </Sequence>
+        </Sequence>    
+    </BehaviorTree>
+</root>
