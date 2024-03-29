@@ -1,0 +1,18 @@
+<root main_tree_to_execute="Root">
+    <BehaviorTree ID="Root">
+        <Sequence name="Root">
+            <Action name="Walk to Door"/>
+            <Selector name="Door Options">
+                <Action name="Open Door"/>
+                <Sequence name="Unlock and Open Door">
+                    <Action name="Unlock Door"/>
+                    <Action name="Open Door2"/>
+                </Sequence>
+                <Action name="Smash Door"/>
+            </Selector>
+            <Action name="Walk Through Door"/>
+            <Action name="Close Door"/>
+        </Sequence>
+    </BehaviorTree>
+</root>
+

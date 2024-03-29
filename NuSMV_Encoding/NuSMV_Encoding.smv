@@ -1,0 +1,181 @@
+MODULE main
+
+-- union of success variables for both behavior trees
+VAR Walk_Through_Door_success : boolean;
+VAR Close_Door_success : boolean;
+VAR Walk_to_Door_success : boolean;
+VAR Unlock_Door_success : boolean;
+VAR Smash_Door_success : boolean;
+VAR Open_Door_success : boolean;
+VAR Open_Door2_success : boolean;
+VAR Try_Another_Key_success : boolean;
+
+-- instances of the two trees to compare
+VAR t1: tree1(Walk_to_Door_success, Open_Door_success, Unlock_Door_success, Open_Door2_success, Smash_Door_success, Walk_Through_Door_success, Close_Door_success);
+VAR t2: tree2(Walk_to_Door_success, Open_Door_success, Unlock_Door_success, Open_Door2_success, Try_Another_Key_success, Smash_Door_success, Walk_Through_Door_success, Close_Door_success);
+
+-- write specifications
+LTLSPEC G (t1.Walk_Through_Door = t2.Open_Door);
+
+MODULE tree1(Walk_to_Door_success, Open_Door_success, Unlock_Door_success, Open_Door2_success, Smash_Door_success, Walk_Through_Door_success, Close_Door_success)
+
+VAR Walk_to_Door : boolean;
+VAR Open_Door : boolean;
+VAR Unlock_Door : boolean;
+VAR Open_Door2 : boolean;
+VAR Smash_Door : boolean;
+VAR Walk_Through_Door : boolean;
+VAR Close_Door : boolean;
+
+VAR
+	Node: {Walk_to_DoorX, Open_DoorX, Unlock_DoorX, Open_Door2X, Smash_DoorX, Walk_Through_DoorX, Close_DoorX, Done};
+
+INIT
+	Node = Walk_to_DoorX;
+
+ASSIGN
+  Walk_to_Door := 
+    case
+      Node = Walk_to_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Open_Door := 
+    case
+      Node = Open_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Unlock_Door := 
+    case
+      Node = Unlock_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Open_Door2 := 
+    case
+      Node = Open_Door2X : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Smash_Door := 
+    case
+      Node = Smash_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Walk_Through_Door := 
+    case
+      Node = Walk_Through_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Close_Door := 
+    case
+      Node = Close_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(Node) :=
+    case
+      Node = Walk_to_DoorX & next(Open_Door_success) : Open_DoorX;
+      Node = Walk_to_DoorX & !next(Open_Door_success) : Done;
+      Node = Open_DoorX & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Open_DoorX & !next(Walk_Through_Door_success) : Unlock_DoorX;
+      Node = Unlock_DoorX & next(Open_Door2_success) : Open_Door2X;
+      Node = Unlock_DoorX & !next(Open_Door2_success) : Smash_DoorX;
+      Node = Open_Door2X & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Open_Door2X & !next(Walk_Through_Door_success) : Smash_DoorX;
+      Node = Smash_DoorX & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Smash_DoorX & !next(Walk_Through_Door_success) : Done;
+      Node = Walk_Through_DoorX & next(Close_Door_success) : Close_DoorX;
+      Node = Walk_Through_DoorX & !next(Close_Door_success) : Done;
+      Node = Close_DoorX : Done;
+      TRUE : Done;
+    esac;
+
+MODULE tree2(Walk_to_Door_success, Open_Door_success, Unlock_Door_success, Open_Door2_success, Try_Another_Key_success, Smash_Door_success, Walk_Through_Door_success, Close_Door_success)
+
+VAR Walk_to_Door : boolean;
+VAR Open_Door : boolean;
+VAR Unlock_Door : boolean;
+VAR Open_Door2 : boolean;
+VAR Try_Another_Key : boolean;
+VAR Smash_Door : boolean;
+VAR Walk_Through_Door : boolean;
+VAR Close_Door : boolean;
+
+VAR
+	Node: {Walk_to_DoorX, Open_DoorX, Unlock_DoorX, Open_Door2X, Try_Another_KeyX, Smash_DoorX, Walk_Through_DoorX, Close_DoorX, Done};
+
+INIT
+	Node = Walk_to_DoorX;
+
+ASSIGN
+  Walk_to_Door := 
+    case
+      Node = Walk_to_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Open_Door := 
+    case
+      Node = Open_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Unlock_Door := 
+    case
+      Node = Unlock_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Open_Door2 := 
+    case
+      Node = Open_Door2X : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Try_Another_Key := 
+    case
+      Node = Try_Another_KeyX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Smash_Door := 
+    case
+      Node = Smash_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Walk_Through_Door := 
+    case
+      Node = Walk_Through_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  Close_Door := 
+    case
+      Node = Close_DoorX : TRUE ;
+      TRUE : FALSE;
+    esac;
+
+  next(Node) :=
+    case
+      Node = Walk_to_DoorX & next(Open_Door_success) : Open_DoorX;
+      Node = Walk_to_DoorX & !next(Open_Door_success) : Done;
+      Node = Open_DoorX & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Open_DoorX & !next(Walk_Through_Door_success) : Unlock_DoorX;
+      Node = Unlock_DoorX & next(Open_Door2_success) : Open_Door2X;
+      Node = Unlock_DoorX & !next(Open_Door2_success) : Smash_DoorX;
+      Node = Open_Door2X & next(Try_Another_Key_success) : Try_Another_KeyX;
+      Node = Open_Door2X & !next(Try_Another_Key_success) : Smash_DoorX;
+      Node = Try_Another_KeyX & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Try_Another_KeyX & !next(Walk_Through_Door_success) : Smash_DoorX;
+      Node = Smash_DoorX & next(Walk_Through_Door_success) : Walk_Through_DoorX;
+      Node = Smash_DoorX & !next(Walk_Through_Door_success) : Done;
+      Node = Walk_Through_DoorX & next(Close_Door_success) : Close_DoorX;
+      Node = Walk_Through_DoorX & !next(Close_Door_success) : Done;
+      Node = Close_DoorX : Done;
+      TRUE : Done;
+    esac;
