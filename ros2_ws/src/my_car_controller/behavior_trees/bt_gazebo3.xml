@@ -1,0 +1,105 @@
+<!-- <root BTCPP_format="4">
+    <BehaviorTree ID="MainTree">
+        <Parallel name="MainParallel" success_threshold="1" failure_threshold="1">
+            <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="10.0"/>
+            <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-2.0" sleep_duration="10.0"/>        
+        </Parallel>
+    </BehaviorTree>
+</root> -->
+
+
+
+
+<!-- <root BTCPP_format="4">
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <Action ID="MoveNode" name="MoveForward" linear_speed="2.0" angular_speed="0.0" sleep_duration="10.0"/>
+            <Action ID="MoveNode" name="RotateClockwise" linear_speed="0.0" angular_speed="-2.0" sleep_duration="10.0"/>        
+        </Sequence>
+    </BehaviorTree>
+</root> -->
+
+
+<!-- <Action ID="MoveNode" name="RotateAntiClockwise" linear_speed="0.0" angular_speed="2.0" sleep_duration="3.0"/>
+            <Action ID="MoveNode" name="RotateBackward" linear_speed="-2.0" angular_speed="0.0" sleep_duration="3.0"/>
+            <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="1.0"/> -->
+
+<!-- 
+            <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="1.0"/> -->
+
+           
+
+
+
+
+<!-- <root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <Fallback name="Navigation Options"> 
+                <Sequence name="Turn Right">   
+                    <MoveNode name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="2"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <ContactNode name="ContactNode"/>
+                </Sequence>
+                <Sequence>
+                    <MoveNode name="Reverse" linear_speed="-0.5" angular_speed="0.0" sleep_duration="2"/>
+                    <MoveNode name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="2"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <ContactNode name="ContactNode"/>
+                </Sequence>
+                <Sequence> 
+                    <MoveNode name="TurnLeft" linear_speed="0.0" angular_speed="0.5" sleep_duration="2"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <LidarNode name="LidarNode" threshold= "3"/>
+                </Sequence>
+            </Fallback>
+            <Sequence name= "Reverse and Turn Around">
+                <Action ID="MoveNode" name="Reverse" linear_speed="-0.5" angular_speed="0.0" sleep_duration="4"/>
+                <Action ID="MoveNode" name="TurnAround" linear_speed="0.0" angular_speed="6.28" sleep_duration="1"/>   
+                <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                <Action ID="LidarNode" name="LidarNode" threshold= "1"/>
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>  
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+</root> -->
+
+
+
+
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence>    
+            <Action ID="MoveNode" name="Initilize" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>  
+        <ReactiveSequence>    
+            <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="2"/>
+            <LidarNode name="LidarNode" threshold ="1"/>
+        </ReactiveSequence>    
+            <Fallback name="Navigation Options"> 
+                <Sequence name="Turn Right">   
+                    <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>  
+                    <MoveNode name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="3"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <ContactNode name="ContactNode"/>
+                </Sequence>
+                <Sequence>
+                    <MoveNode name="Reverse" linear_speed="-0.5" angular_speed="0.0" sleep_duration="2"/>
+                    <MoveNode name="TurnRight" linear_speed="0.0" angular_speed="-0.5" sleep_duration="3"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <ContactNode name="ContactNode"/>
+                </Sequence>
+                <Sequence> 
+                    <MoveNode name="TurnLeft" linear_speed="0.0" angular_speed="0.5" sleep_duration="2"/>
+                    <MoveNode name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="1"/>
+                    <LidarNode name="LidarNode" threshold= "1"/>
+                </Sequence>
+            </Fallback>
+            <Sequence name= "Reverse and Turn Around">
+                <Action ID="MoveNode" name="Reverse" linear_speed="-0.5" angular_speed="0.0" sleep_duration="4"/>
+                <Action ID="MoveNode" name="TurnAround" linear_speed="0.0" angular_speed="6.28" sleep_duration="2.5"/>   
+                <Action ID="MoveNode" name="Forward" linear_speed="0.5" angular_speed="0.0" sleep_duration="14"/>
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>  
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+</root>
