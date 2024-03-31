@@ -1,0 +1,13 @@
+<root BTCPP_format="4">
+    <TreeNodesModel>
+        <Action ID="ContactNode"/>
+        <Action ID="LidarNode">
+            <input_port name="threshold" type="double"/>
+        </Action>
+        <Action ID="MoveNode">
+            <input_port name="sleep_duration" type="double"/>
+            <input_port name="angular_speed" type="double"/>
+            <input_port name="linear_speed" type="double"/>
+        </Action>
+    </TreeNodesModel>
+</root>
