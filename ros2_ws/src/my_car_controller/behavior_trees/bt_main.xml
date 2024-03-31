@@ -1,0 +1,30 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+                            <Action ID="MoveNode" name="Initialize" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>
+                <ReactiveSequence>
+                            <Action ID="MoveNode" name="Forward" linear_speed="1" angular_speed="0.0" sleep_duration="2"/>
+                            <Action ID="LidarNode" name="LidarNode" threshold= "2"/>
+                            <Action ID="MoveNode" name="Reverse" linear_speed="-1.0" angular_speed="0.0" sleep_duration="3"/>
+                </ReactiveSequence>
+                <Sequence>
+                            <Action ID="MoveNode" name ="Left" linear_speed="0.0" angular_speed="2" sleep_duration="2"/>
+                            <Action ID="MoveNode" name="Forward" linear_speed="1" angular_speed="0.0" sleep_duration="2"/>
+                            <Action ID="LidarNode" name="LidarNode" threshold= "2"/>
+                            <Action ID="MoveNode" name="Reverse" linear_speed="-1.0" angular_speed="0.0" sleep_duration="3"/>
+                </Sequence>
+                <Sequence>
+                            <Action ID="MoveNode" name="Right" linear_speed="0.0" angular_speed="-2" sleep_duration="2"/>
+                            <Action ID="MoveNode" name="Forward" linear_speed="1" angular_speed="0.0" sleep_duration="2"/>
+                            <Action ID="LidarNode" name="LidarNode" threshold= "2"/>
+                            <Action ID="MoveNode" name="Reverse" linear_speed="-1.0" angular_speed="0.0" sleep_duration="3"/>
+                </Sequence>
+                
+                <Action ID="MoveNode" name="Forward" linear_speed="1.0" angular_speed="0.0" sleep_duration="3"/>
+                <Action ID="LidarNode" name="LidarNode" threshold= "2"/>
+                
+                
+                <Action ID="MoveNode" name="Halt" linear_speed="0.0" angular_speed="0.0" sleep_duration="2"/>
+        </Sequence>
+    </BehaviorTree>
+</root>
