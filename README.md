@@ -1,6 +1,5 @@
 
 
-
 ## Getting started
 Consists of a ros2 workspace
 
@@ -318,6 +317,6 @@ It is a 3D world with a differential drive robot.
 1. For Gazebo Fottress use the command "ign gazebo file_name.sdf"
 2. Establish a bridge between ROS2 ansd Gazebo topic run the command "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
 3. Establish a bridge for Lidar "ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan"
-4. Establish a bridge contact sensor "ros2 run ros_gz_bridge parameter_bridge /wall/touched@std_msgs/msg/Bool[gz.msgs.Boolean"
+4. Establish a bridge for contact sensor "ros2 run ros_gz_bridge parameter_bridge /wall/touched@std_msgs/msg/Bool[gz.msgs.Boolean"
 
 
