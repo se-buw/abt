@@ -1,38 +1,322 @@
-# ABT
+# adley
 
 
 
 ## Getting started
+Consists of a ros2 workspace
 
-This is the Analyses of Behavior Trees (ABT) project repository.
+Consists of the Gazebo .sdf files for simulating 3D environment and vehicles.
 
+## Package
+#### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
+#### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
+#### 3. BehaviorTree.CPP: C++ library for creating behavior trees
+#### 4. [my_turtle_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#4-my_turtle_controller-1)
+#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1)
 
-## Quickstart: How to use the repo?
-#### Clone the repository
+#### 1. my_robot_controller
+This package consists of the following files
 
-```
-cd <location where the repo should be stored>
-git clone http://se-git.medien.uni-weimar.de/se-projects/abt.git
-```
-
-## Organisation of the repository
-
-This repository is intended as the central place for everything source code related. Source code related means all source files, scripts, source code documentation, and testing-related code are collected here, but please EXCLUDE binaries or external pre-compiled dependencies. Please use the [projects moodle-course](https://moodle.uni-weimar.de/course/view.php?id=47422) for meeting-related documents like notes, presentations, or paper collections.
-
-If you need to work on the same code simultaneously, feel free to create branches so that your changes do not interfere with the ones made by the other project members. But please also merge them when you finish your work or if they are not needed anymore.
-
-The repository is subdivided into several folders. A brief explanation of the sub-folders'  function can be found in the respective sub-folder. Please use the folders accordingly.
-
-### Branches
-- `main`: This is the main branch of the repository. It is intended to be used for the final version of the project. It should be stable and ready to use at any time.
-- TODO: 
-
-### Instruction for tasks submission
-- To submit your weekly work, you need to commit your work and create a tag for it. The tag should be named as `w-<week number>-<your name>`. For example, if I am submitting my work for week 1, the tag should be named as `w-1-soaib`. Please remember to commit your work before creating the tag. Otherwise, the tag will not contain your work. Please refer to the following link for more information on how to create a tag- https://git-scm.com/book/en/v2/Git-Basics-Tagging
-- After creating the tag, you need to push it to the remote repository. You can do it by running the following command: `git push origin <tag name>`. For example, if I am submitting my work for week 1, the command should be `git push origin w-1-soaib`. 
-- After pushing the tag, copy the tag link and submit it in the [moodle](https://moodle.uni-weimar.de/course/view.php?id=47422) corrosponding to the weekly task. You can copy the tag link by clicking on the tag name in the repository and then copying the link from the browser.
+1. [__init__.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#1-initpy)
+2. [moveTurtle.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#2-moveturtlepy)
+3. [turtle_publisher.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#3-turtle_publisherpy)
+4. [turtle_subscriber.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#4-turtle_subscriberpy)
+5. [advanced_turtle1.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-advanced_turtle1py)
+6. [advanced_turtle2.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#6-advanced_turtle2py)
+7. [advanced_turtle3.py](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#7-advanced_turtle3py)
 
 
+#### 1. __init__.py
 
+It initialises the python package and marks the directory as a package.
+
+#### 2. moveTurtle.py
+
+It consists of the class MoveTurtle class which creates a publisher to control the turtle movement and subscriber to receive the co-ordinates of the turtle in the same terminal.
+
+The turtle movement is controlled to draw a circle by changing the linear velocity, angular velocity and angle of the turtlesim node.
+
+[Run the code following the instructions at the end and using the name moveTurtle.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+
+##### Dependencies 
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
+Pose from turtlesim.msg
+
+
+#### 3. turtle_publisher.py
+
+It consists of the class TurtlePublisher which controls the turtlesim node to move in a circle.
+
+The turtle movement is controlled to draw a circle by changing the linear velocity, angular velocity and angle of the turtlesim node.
+
+[Run the code following the instructions at the end and using the name turtle_publisher.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+
+##### Dependencies 
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
+time
+
+#### 4. turtle_subscriber.py
+
+It consists of the class "TurtleSubscriber" which receoves the messages from the turtlesim node x and y coordinates.
+
+[Run the code following the instructions at the end and using the name turtle_subscriber.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+##### Dependencies 
+rclpy\
+Node from rclpy.node\
+Pose from turtlesim.msg
+
+#### 5. advanced_turtle1.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+
+The BT structure is as below:
+
+Sequence (Root)\
+|\
+|-- MoveForward (Action node)\
+|\
+|-- Zigzag (Action node)
+
+
+
+The main function is used to define the structure of BT.
+
+[Run the code following the instructions at the end and using the name advanced_turtle1.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+
+##### Dependencies 
+py_trees\
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg\
+
+#### 6. advanced_turtle2.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+- "RotateClockwise" which rotates the turtle clockwise using the angular component of the node.
+- "RotateCounterClockwise" which rotates the turtle counter-clockwise using the angular component of the node.
+
+The BT structure is as below:
+
+Sequence (Root: Sequence node)\
+|\
+|-- MoveForward (Action node)\
+|\
+|-- Zigzag (Action node)\
+|\
+|-- RotateClockwise (Action node)\
+|\
+|-- RotateCounterClockwise (Action node)\
+
+
+
+The main function is used to define the structure of BT.
+
+[Run the code following the instructions at the end and using the name advanced_turtle2.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+
+##### Dependencies 
+py_trees\
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg
+
+#### 7. advanced_turtle3.py
+
+It is used to control the movement of the turtlesim node by implementing a Behavior Tree (BT).
+
+It consists of the class 
+- "MoveForward" which inherits from the py_trees.behavior.Behavior and moves the turtlesim node forward.
+- "ZigZag" which turns the turtle left and right to move in a zigzag motion
+- "RotateClockwise" which rotates the turtle clockwise using the angular component of the node.
+- "RotateCounterClockwise" which rotates the turtle counter-clockwise using the angular component of the node.
+
+The BT structure is as below:
+
+RootSelector (Root : Selector node)\
+|\
+|-- ForwardNode (Sequence node)\
+|   |\
+|   |-- MoveForward (Action node)\
+|   |\
+|   |-- Zigzag (Action node)\
+|\
+|-- RotationNode (Sequence node)\
+    |\
+    |-- RotateClockwise (Action node)\
+    |\
+    |-- RotateCounterClockwise (Action node)\
+
+
+The main function is used to define the structure of BT.
+
+[Run the code following the instructions at the end and using the name advanced_turtle3.](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#running-the-code)
+
+##### Dependencies 
+py_trees\
+rclpy\
+Node from rclpy.node\
+Twist from geometry_msgs.msg
+
+
+#### 2. my_behavior_tree
+
+This package consists of the following executable files
+
+my_behavior_tree.cpp
+
+my_behavior_tree implements a basic Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_behavior_tree.xml. As the BT is executed the output is printed in the console.
+
+The contents of my_behavior_tree.xml are given below,
+
+- **MainTree**
+  - **Sequence** (RootSequence)
+    - *MoveForward*
+    - *TurnLeft*
+    - **MySelector** (BatteryCheckSelector)
+      - *CheckBattery*
+      - **Sequence** (MoveTurnSequence)
+        - *MoveRight*
+        - *StopMovement*
+
+
+We see the following ouput in the console:
+
+Moving forward...\
+Turning left...\
+Checking battery...
+----------------------
+Update the path in the my_behavior_tree.cpp file for the xml file as in your local directory before running the code.
+Run the file following the instructions at the end and using the name my_behavior_tree.
+
+#### Dependencies
+behaviortree_cpp\
+iostream
+
+#### 4. my_turtle_controller
+
+This package consists of the following executable files
+
+my_turtle_behavior.cpp
+
+my_turtle_behavior implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_turtle_behavior.xml. As the BT is executed the turtlesim node is controlled to trace the path in a hexagon fashion.
+
+The behavior tree which is stored in the xml as follows:
+
+- **MainTree**
+  - **Sequence**
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+
+
+Update the path in the my_turtle_behaviore.cpp file for the xml file as in your local directory before running the code.
+Run the file following the instructions at the end and using the name my_turtle_controller.
+
+#### Dependencies
+behaviortree_cpp\
+rclcpp\
+geometry_msgs\
+turtlesim\
+
+#### 5. my_car_controller
+
+This package consists of the following executable files
+
+- my_car_controller.cpp
+
+my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car.
+
+The behavior tree which is stored in the xml as follows:
+
+- **MainTree**
+  - **Sequence**
+    - **Sequence**
+      - *Halt*
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+    - **Sequence**
+      - *MoveForward*
+      - *RotateClockwise*
+      - *Halt*
+
+
+Update the path in the my_car_controller.cpp file for the xml file as in your local directory before running the code.
+
+
+The Gazebo bot can be run using the command "ign gazebo basic_robot.sdf". The command should be run by opening a terminal in the file location.
+The bridge to the topic cmd_vel between ROS2 and Gazebo is established by running the command in the terminal at the home directory "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
+
+Run the file following the instructions at the end and using the name my_car_controller.
+
+#### Dependencies
+behaviortree_cpp\
+rclcpp\
+geometry_msgs\
+
+
+## Gazebo files
+1. basic_robot.sdf
+
+Reference : https://github.com/gazebosim/docs/blob/master/fortress/tutorials/moving_robot/moving_robot.sdf
+
+It is a 3D world with a differential drive robot.
+
+## Running the executable in the ROS2 workspace
+1. Navigate to the ros2_ws in the terminal (ros2 workspace : cd ros2_ws)
+2. execute the command "colcon build" or for particular packages use command : "colcon build --packages-select name-of-pkg"
+
+3. execute the command : "source install/setup.bash"
+4. If the executable is for a turtlesim node run command : ros2 run turtlesim turtlesim_node
+5. Run the desired file by executing the command : ros2 run "package name" "access name".
+   Access name is the same as the file name without the extension (e.g. .py for python)
+
+
+## Running Gazebo files
+1. For Gazebo Fottress use the command "ign gazebo file_name.sdf"
+2. To establish a bridge between ROS2 ansd Gazebo topic run the command "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
 
 
