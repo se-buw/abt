@@ -10,7 +10,7 @@
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 #### 3. BehaviorTree.CPP: C++ library for creating behavior trees
 #### 4. [my_turtle_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#4-my_turtle_controller-1)
-#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1) // Final deploment package
+#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1)  [*Final deployment package*]
 
 #### 1. my_robot_controller
 This package consists of the following files
