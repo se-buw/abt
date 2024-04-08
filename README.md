@@ -1,11 +1,11 @@
 ## Getting started
-Consists of NuSMV Encoding
+--Consists of NuSMV Encoding--
 
-Consists of a ros2 workspace
+--Consists of a ros2 workspace--
 
-Consists of the Gazebo .sdf files for simulating 3D environment and vehicles.
+--Consists of the Gazebo .sdf files for simulating 3D environment and vehicles--
 
-## Package
+## Packages of the ros2 workspace
 #### 1. [my_robot_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#1-my_robot_controller-1)
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 #### 3. BehaviorTree.CPP: C++ library for creating behavior trees
