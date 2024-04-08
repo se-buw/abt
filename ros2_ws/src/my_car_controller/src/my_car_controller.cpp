@@ -7,8 +7,8 @@ http://docs.ros.org/en/indigo/api/behaviortree_cpp_v3/html/classBT_1_1SyncAction
 #include <behaviortree_cpp/bt_factory.h>
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/logging.hpp>
-#include <geometry_msgs/msg/twist.hpp>
-#include <sensor_msgs/msg/laser_scan.hpp>
+#include <geometry_msgs/msg/twist.hpp> // package for handling velocity commands
+#include <sensor_msgs/msg/laser_scan.hpp> // package for handling laser scan information
 #include <sensor_msgs/msg/imu.hpp>
 #include <std_msgs/msg/bool.hpp>
 #include <chrono>
@@ -25,16 +25,16 @@ public:
     MoveNode(const std::string& name, const BT::NodeConfiguration& config)
         : BT::SyncActionNode(name, config), linear_speed_(0.0), angular_speed_(0.0), sleep_duration_(2)
     {
-        initializeNode();
+        initializeNode(); 
     }
 
-    ~MoveNode() override {
+    ~MoveNode() override { //Deconstructor for the Class
         twist_publisher_.reset();
         node_.reset();
         rclcpp::shutdown();
     }
 
-    BT::NodeStatus tick() override {
+    BT::NodeStatus tick() override { // accessing the drive parameters
         BT::Expected<double> linear_speed = getInput<double>("linear_speed");
         BT::Expected<double> angular_speed = getInput<double>("angular_speed");
         BT::Expected<double> sleep_duration = getInput<double>("sleep_duration");
@@ -75,7 +75,7 @@ private:
         if (!node_) {
             node_ = rclcpp::Node::make_shared("move_node");
             // publisher for drive commands
-            twist_publisher_ = node_->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10); 
+            twist_publisher_ = node_->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10); // topic name for drive commands "cmd_vel"
         }
     }
 
@@ -87,8 +87,8 @@ private:
     double sleep_duration_;
 };
 
-rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr;
-rclcpp::Node::SharedPtr MoveNode::node_ = nullptr;
+rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr MoveNode::twist_publisher_ = nullptr; //Initialization value
+rclcpp::Node::SharedPtr MoveNode::node_ = nullptr;// initialization value
 
  //Node for interpretation of lidar messages 
 class LidarNode : public BT::StatefulActionNode {
@@ -96,9 +96,9 @@ public:
     LidarNode(const std::string& name, const BT::NodeConfig& config)
         : BT::StatefulActionNode(name, config), threshold_(1.0), lidar_message_received_(false), num_rays_(0)
     {
-        node_ = config.blackboard->get<rclcpp::Node::SharedPtr>("node");
+        node_ = config.blackboard->get<rclcpp::Node::SharedPtr>("node"); // accessing the common ROS2 node
         subscription_ = node_->create_subscription<sensor_msgs::msg::LaserScan>(
-            "/lidar", 10, [this](const sensor_msgs::msg::LaserScan::SharedPtr msg) {
+            "/lidar", 10, [this](const sensor_msgs::msg::LaserScan::SharedPtr msg) {// subscription to the lidar information from the sensor
                 handleLidarMessage(msg);
             });
         
@@ -178,7 +178,7 @@ public:
     {
         node_ = config.blackboard->get<rclcpp::Node::SharedPtr>("node");
         subscription_ = node_->create_subscription<std_msgs::msg::Bool>(
-            "/wall/touched", 100, [this](const std_msgs::msg::Bool::SharedPtr msg) {
+            "/wall/touched", 100, [this](const std_msgs::msg::Bool::SharedPtr msg) {// subscription to the contact sensor 
                 handleContactMessage(msg);
             });
     }
