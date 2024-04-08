@@ -10,7 +10,7 @@
 #### 2. [my_behavior_tree](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#2-my_behavior_tree-1)
 #### 3. BehaviorTree.CPP: C++ library for creating behavior trees
 #### 4. [my_turtle_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/blob/adley/README.md#4-my_turtle_controller-1)
-#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1)
+#### 5. [my_car_controller](https://se-git.medien.uni-weimar.de/se-projects/abt/-/tree/adley#5-my_car_controller-1) // Final deploment package
 
 #### 1. my_robot_controller
 This package consists of the following files
@@ -253,14 +253,7 @@ This package consists of the following executable files
 
 my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car. It also subscribes to the lidar and contact information for autonmous navigation.
 
-
-
-
 Update the path in the my_car_controller.cpp file for the xml file as in your local directory before running the code.
-
-
-The Gazebo bot can be run using the command "ign gazebo Environment_1.sdf". The command should be run by opening a terminal in the file location.
-The bridge to the topic cmd_vel between ROS2 and Gazebo is established by running the command in the terminal at the home directory "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
 
 Run the file following the instructions at the end and using the name my_car_controller.
 
