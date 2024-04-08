@@ -1,5 +1,4 @@
 
-
 ## Getting started
 Consists of a ros2 workspace
 
@@ -251,41 +250,15 @@ This package consists of the following executable files
 
 - my_car_controller.cpp
 
-my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car.
+my_car_controller implements a Behavior tree (BT) which inherits from behaviortree_cpp C++ package. This file executes a BT by traversing the xml file /behavior_trees/my_car_behavior.xml. As the BehaviorTree is traversed it interacts with the simulated bot in the Gazebo environment. It publishes in the /cmd_vel topic to control the movement of the car. It also subscribes to the lidar and contact information for autonmous navigation.
 
-The behavior tree which is stored in the xml as follows:
 
-- **MainTree**
-  - **Sequence**
-    - **Sequence**
-      - *Halt*
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-    - **Sequence**
-      - *MoveForward*
-      - *RotateClockwise*
-      - *Halt*
 
 
 Update the path in the my_car_controller.cpp file for the xml file as in your local directory before running the code.
 
 
-The Gazebo bot can be run using the command "ign gazebo basic_robot.sdf". The command should be run by opening a terminal in the file location.
+The Gazebo bot can be run using the command "ign gazebo Environment_1.sdf". The command should be run by opening a terminal in the file location.
 The bridge to the topic cmd_vel between ROS2 and Gazebo is established by running the command in the terminal at the home directory "ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist]ignition.msgs.Twist"
 
 Run the file following the instructions at the end and using the name my_car_controller.
@@ -297,7 +270,8 @@ geometry_msgs\
 
 
 ## Gazebo files
-1. basic_robot.sdf
+1. Environment_1.sdf
+2. Environment_2.sdf
 
 Reference : https://github.com/gazebosim/docs/blob/master/fortress/tutorials/moving_robot/moving_robot.sdf
 
