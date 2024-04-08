@@ -264,8 +264,8 @@ geometry_msgs\
 
 
 ## Gazebo files
-1. Environment_1.sdf
-2. Environment_2.sdf
+1. Environment_1.sdf -- Simulation environment with contact sensors and autonomous vehicle with lidar sensor.
+2. Environment_2.sdf -- Simulation environment with an actor and autonomous vehicle with lidar sensor.
 
 Reference : https://github.com/gazebosim/docs/blob/master/fortress/tutorials/moving_robot/moving_robot.sdf
 
