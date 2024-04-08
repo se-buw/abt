@@ -1,5 +1,6 @@
-
 ## Getting started
+Consists of NuSMV Encoding
+
 Consists of a ros2 workspace
 
 Consists of the Gazebo .sdf files for simulating 3D environment and vehicles.
